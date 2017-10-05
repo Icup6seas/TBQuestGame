@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TB_QuestGame
 {
     /// <summary>
-    /// the character class the player uses in the game
+    /// the character class the player uses in the game.
     /// </summary>
     public class Wonderer : Character
     {
