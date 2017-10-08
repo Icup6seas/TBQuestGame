@@ -33,7 +33,7 @@ namespace TB_QuestGame
 
         }
 
-        public Wonderer(string name, RaceType race) : base(name, race)
+        public Wonderer(string name, RaceType race, HeightType height) : base(name, race, height)
         {
 
         }

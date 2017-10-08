@@ -11,12 +11,25 @@ namespace TB_QuestGame
     /// </summary>
     public class ConsoleView
     {
+        #region ENUMS
+
+        private enum ViewStatus
+        {
+            WondererInitialization,
+            PlayingGame
+        }
+
+        #endregion
+
+
         #region FIELDS
 
         //
         // declare game objects for the ConsoleView object to use
         //
         Wonderer _gameWonderer;
+
+        ViewStatus _viewStatus;
 
         #endregion
 
@@ -61,6 +74,7 @@ namespace TB_QuestGame
             DisplayMessageBox(messageBoxHeaderText, messageBoxText);
             DisplayMenuBox(menu);
             DisplayInputBox();
+            DisplayStatusBox();
         }
 
         /// <summary>
@@ -147,6 +161,18 @@ namespace TB_QuestGame
         }
 
         /// <summary>
+        /// get a character height value from the user
+        /// </summary>
+        /// <returns></returns>
+        public Character.HeightType GetHeight()
+        {
+            Character.HeightType heightType;
+            Enum.TryParse<Character.HeightType>(Console.ReadLine(), out heightType);
+
+            return heightType;
+        }
+
+        /// <summary>
         /// display splash screen
         /// </summary>
         /// <returns>player chooses to play</returns>
@@ -162,18 +188,16 @@ namespace TB_QuestGame
 
 
             Console.SetCursorPosition(0, 10);
-            string tabSpace = new String(' ', 35);
-            Console.WriteLine(tabSpace + @" _____ _              ___  _               ______          _           _   ");
-            Console.WriteLine(tabSpace + @"|_   _| |            / _ \(_)              | ___ \        (_)         | |  ");
-            Console.WriteLine(tabSpace + @"  | | | |__   ___   / /_\ \_  ___  _ __    | |_/ _ __ ___  _  ___  ___| |_ ");
-            Console.WriteLine(tabSpace + @"  | | | '_ \ / _ \  |  _  | |/ _ \| '_ \   |  __| '__/ _ \| |/ _ \/ __| __|");
-            Console.WriteLine(tabSpace + @"  | | | | | |  __/  | | | | | (_) | | | |  | |  | | | (_) | |  __| (__| |_ ");
-            Console.WriteLine(tabSpace + @"  \_/ |_| |_|\___|  \_| |_|_|\___/|_| |_|  \_|  |_|  \___/| |\___|\___|\__|");
-            Console.WriteLine(tabSpace + @"                                                         _/ |              ");
-            Console.WriteLine(tabSpace + @"                                                        |__/             ");
+            string tabSpace = new String(' ', 25);
+            Console.WriteLine(tabSpace + @" _____   _   _   _____        _          __  _____   __   _   _____   _____   _____    _____   _____ ");
+            Console.WriteLine(tabSpace + @"|_   _| | | | | | ____|      | |        / / /  _  \ |  \ | | |  _  \ | ____| |  _  \  | ____| |  _  \");
+            Console.WriteLine(tabSpace + @"  | |   | |_| | | |__        | |  __   / /  | | | | |   \| | | | | | | |__   | |_| |  | |__   | |_| |");
+            Console.WriteLine(tabSpace + @"  | |   |  _  | |  __|       | | /  | / /   | | | | | |\   | | | | | |  __|  |  _  /  |  __|  |  _  /");
+            Console.WriteLine(tabSpace + @"  | |   | | | | | |___       | |/   |/ /    | |_| | | | \  | | |_| | | |___  | | \ \  | |___  | | \ \");
+            Console.WriteLine(tabSpace + @"  |_|   |_| |_| |_____|      |___/|___/     \_____/ |_|  \_| |_____/ |_____| |_|  \_\ |_____| |_|  \_\");
 
-            Console.SetCursorPosition(80, 25);
-            Console.Write("Press any key to continue or Esc to exit.");
+            Console.SetCursorPosition(87, 16);
+            Console.Write("Press any key to continue or Esc to exit");
             keyPressed = Console.ReadKey();
             if (keyPressed.Key == ConsoleKey.Escape)
             {
@@ -194,7 +218,7 @@ namespace TB_QuestGame
             ConsoleWindowControl.DisableResize();
             ConsoleWindowControl.DisableMaximize();
             ConsoleWindowControl.DisableMinimize();
-            Console.Title = "The Aion Project";
+            Console.Title = "The Wonderer";
 
             //
             // set the default console window values
@@ -294,6 +318,61 @@ namespace TB_QuestGame
 
         }
 
+        public void DisplayStatusBox()
+        {
+            Console.BackgroundColor = ConsoleTheme.InputBoxBackgroundColor;
+            Console.ForegroundColor = ConsoleTheme.InputBoxBorderColor;
+
+            //
+            // display the outline for the status box
+            //
+            ConsoleWindowHelper.DisplayBoxOutline(
+                ConsoleLayout.StatusBoxPositionTop,
+                ConsoleLayout.StatusBoxPositionLeft,
+                ConsoleLayout.StatusBoxWidth,
+                ConsoleLayout.StatusBoxHeight);
+
+            //
+            // display the text for the status box if playing game
+            //
+            if (_viewStatus == ViewStatus.PlayingGame)
+            {
+                //
+                // display status box header with title
+                //
+                Console.BackgroundColor = ConsoleTheme.StatusBoxBorderColor;
+                Console.ForegroundColor = ConsoleTheme.StatusBoxForegroundColor;
+                Console.SetCursorPosition(ConsoleLayout.StatusBoxPositionLeft + 2, ConsoleLayout.StatusBoxPositionTop + 1);
+                Console.Write(ConsoleWindowHelper.Center("Health and Sanity", ConsoleLayout.StatusBoxWidth - 4));
+                Console.BackgroundColor = ConsoleTheme.StatusBoxBackgroundColor;
+                Console.ForegroundColor = ConsoleTheme.StatusBoxForegroundColor;
+
+                //
+                // display stats
+                //
+                int startingRow = ConsoleLayout.StatusBoxPositionTop + 3;
+                int row = startingRow;
+                foreach (string statusTextLine in Text.StatusBox(_gameWonderer))
+                {
+                    Console.SetCursorPosition(ConsoleLayout.StatusBoxPositionLeft + 3, row);
+                    Console.Write(statusTextLine);
+                    row++;
+                }
+            }
+            else
+            {
+                //
+                // display status box header without header
+                //
+                Console.BackgroundColor = ConsoleTheme.StatusBoxBorderColor;
+                Console.ForegroundColor = ConsoleTheme.StatusBoxForegroundColor;
+                Console.SetCursorPosition(ConsoleLayout.StatusBoxPositionLeft + 2, ConsoleLayout.StatusBoxPositionTop + 1);
+                Console.Write(ConsoleWindowHelper.Center("", ConsoleLayout.StatusBoxWidth - 4));
+                Console.BackgroundColor = ConsoleTheme.StatusBoxBackgroundColor;
+                Console.ForegroundColor = ConsoleTheme.StatusBoxForegroundColor;
+            }
+        }
+
         /// <summary>
         /// draw the input box on the game screen
         /// </summary>
@@ -361,37 +440,46 @@ namespace TB_QuestGame
             //
             // intro
             //
-            DisplayGamePlayScreen("Mission Initialization", Text.InitializeMissionIntro(), ActionMenu.MissionIntro, "");
+            DisplayGamePlayScreen("I can't die, I mustn't die", Text.InitializeMissionIntro(), ActionMenu.MissionIntro, "");
             GetContinueKey();
 
             //
             // get Wonderer's name
             //
-            DisplayGamePlayScreen("Mission Initialization - Name", Text.InitializeMissionGetWondererName(), ActionMenu.MissionIntro, "");
+            DisplayGamePlayScreen("Long Lost Name", Text.InitializeMissionGetWondererName(), ActionMenu.MissionIntro, "");
             DisplayInputBoxPrompt("Enter your name: ");
             Wonderer.Name = GetString();
 
             //
             // get Wonderer's age
             //
-            DisplayGamePlayScreen("Mission Initialization - Age", Text.InitializeMissionGetWondererAge(Wonderer), ActionMenu.MissionIntro, "");
+            DisplayGamePlayScreen("Too many birthdays gone by, too little presents", Text.InitializeMissionGetWondererAge(Wonderer), ActionMenu.MissionIntro, "");
             int gameWondererAge;
 
             GetInteger($"Enter your age {Wonderer.Name}: ", 0, 1000000, out gameWondererAge);
             Wonderer.Age = gameWondererAge;
 
             //
+            // get height
+            //
+            DisplayGamePlayScreen("They can't take away who I am, but they might be able to change what I will become.", Text.InitializeMissionGetWondererHeight(Wonderer), ActionMenu.MissionIntro, "");
+            DisplayInputBoxPrompt($"Enter your height {Wonderer.Name}: ");
+            Wonderer.Height = GetHeight();
+
+            //
             // get Wonderer's race
             //
-            DisplayGamePlayScreen("Mission Initialization - Race", Text.InitializeMissionGetWondererRace(Wonderer), ActionMenu.MissionIntro, "");
+            DisplayGamePlayScreen("They can't take away who I am, but they might be able to change what I will become.", Text.InitializeMissionGetWondererRace(Wonderer), ActionMenu.MissionIntro, "");
             DisplayInputBoxPrompt($"Enter your race {Wonderer.Name}: ");
             Wonderer.Race = GetRace();
 
             //
             // echo the Wonderer's info
             //
-            DisplayGamePlayScreen("Mission Initialization - Complete", Text.InitializeMissionEchoWondererInfo(Wonderer), ActionMenu.MissionIntro, "");
+            DisplayGamePlayScreen("My life flashes before my eyes, often", Text.InitializeMissionEchoWondererInfo(Wonderer), ActionMenu.MissionIntro, "");
             GetContinueKey();
+
+            _viewStatus = ViewStatus.PlayingGame;
 
             return Wonderer;
         }

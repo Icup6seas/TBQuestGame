@@ -17,10 +17,29 @@ namespace TB_QuestGame
         {
             None,
             Human,
-            Thorian,
-            Xantorian
+            Beelzebub,
+            Stolas,
+            Buer,
+            Balrog
         }
 
+        public enum HeightType
+        {
+            None,
+            Short,
+            Mediam,
+            Tall,
+            Giant
+        }
+
+        //public enum SanityType
+        //{
+        //    None,
+        //    Fine,
+        //    Groggy,
+        //    Anxious,
+        //    Calm
+        //}
         #endregion
 
         #region FIELDS
@@ -28,6 +47,8 @@ namespace TB_QuestGame
         private string _name;
         private int _age;
         private RaceType _race;
+        private HeightType _height;
+        //private SanityType _sanity
 
         #endregion
 
@@ -51,6 +72,18 @@ namespace TB_QuestGame
             set { _race = value; }
         }
 
+        public HeightType Height
+        {
+            get { return _height; }
+            set { _height = value; }
+        }
+
+        //public SanityType Sanity
+        //{
+        //    get { return _sanity; }
+        //    set { _sanity = value; }
+        //}
+
         #endregion
 
         #region CONSTRUCTORS
@@ -60,10 +93,12 @@ namespace TB_QuestGame
 
         }
 
-        public Character(string name, RaceType race)
+        public Character(string name, RaceType race, HeightType height /*,SanityType sanity*/)
         {
             _name = name;
             _race = race;
+            _height = height;
+            //_sanity = sanity;
         }
 
         #endregion

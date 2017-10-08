@@ -78,7 +78,7 @@ namespace TB_QuestGame
             //
             // display introductory message
             //
-            _gameConsoleView.DisplayGamePlayScreen("Mission Intro", Text.MissionIntro(), ActionMenu.MissionIntro, "");
+            _gameConsoleView.DisplayGamePlayScreen("Run!!!", Text.MissionIntro(), ActionMenu.MissionIntro, "");
             _gameConsoleView.GetContinueKey();
 
             //
@@ -89,7 +89,7 @@ namespace TB_QuestGame
             //
             // prepare game play screen
             //
-            _gameConsoleView.DisplayGamePlayScreen("Current Location", Text.CurrrentLocationInfo(), ActionMenu.MainMenu, "");
+            _gameConsoleView.DisplayGamePlayScreen("The House", Text.CurrrentLocationInfo(), ActionMenu.MainMenu, "");
 
             //
             // game loop
@@ -135,6 +135,7 @@ namespace TB_QuestGame
             _gameWonderer.Name = Wonderer.Name;
             _gameWonderer.Age = Wonderer.Age;
             _gameWonderer.Race = Wonderer.Race;
+            _gameWonderer.Height = Wonderer.Height;
         }
 
         #endregion
