@@ -15,6 +15,7 @@ namespace TB_QuestGame
 
         private ConsoleView _gameConsoleView;
         private Wonderer _gameWonderer;
+        private Home _gameHome;
         private bool _playingGame;
 
         #endregion
@@ -49,7 +50,8 @@ namespace TB_QuestGame
         private void InitializeGame()
         {
             _gameWonderer = new Wonderer();
-            _gameConsoleView = new ConsoleView(_gameWonderer);
+            _gameHome = new Home();
+            _gameConsoleView = new ConsoleView(_gameWonderer, _gameHome);
             _playingGame = true;
 
             Console.CursorVisible = false;
@@ -110,6 +112,10 @@ namespace TB_QuestGame
                         _gameConsoleView.DisplayWondererInfo();
                         break;
 
+                    case WondererAction.ListHomeLocations:
+                        _gameConsoleView.DisplayListOfHomeLocations();
+                        break;
+
                     case WondererAction.Exit:
                         _playingGame = false;
                         break;
@@ -136,6 +142,7 @@ namespace TB_QuestGame
             _gameWonderer.Age = Wonderer.Age;
             _gameWonderer.Race = Wonderer.Race;
             _gameWonderer.Height = Wonderer.Height;
+            _gameWonderer.Sanity = Wonderer.Sanity;
         }
 
         #endregion

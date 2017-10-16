@@ -32,23 +32,24 @@ namespace TB_QuestGame
             Giant
         }
 
-        //public enum SanityType
-        //{
-        //    None,
-        //    Fine,
-        //    Groggy,
-        //    Anxious,
-        //    Calm
-        //}
+        public enum SanityType
+        {
+            None,
+            Calm,
+            Fine,
+            Anxious,
+            FreakedOut,
+        }
         #endregion
 
         #region FIELDS
 
         private string _name;
+        //private int _homeLocationID;
         private int _age;
         private RaceType _race;
         private HeightType _height;
-        //private SanityType _sanity
+        private SanityType _sanity;
 
         #endregion
 
@@ -59,6 +60,12 @@ namespace TB_QuestGame
             get { return _name; }
             set { _name = value; }
         }
+
+        //public int HomeLocationID
+        //{
+        //    get { return _homeLocationID; }
+        //    set { _homeLocationID = value; }
+        //}
 
         public int Age
         {
@@ -78,11 +85,11 @@ namespace TB_QuestGame
             set { _height = value; }
         }
 
-        //public SanityType Sanity
-        //{
-        //    get { return _sanity; }
-        //    set { _sanity = value; }
-        //}
+        public SanityType Sanity
+        {
+            get { return _sanity; }
+            set { _sanity = value; }
+        }
 
         #endregion
 
@@ -93,12 +100,12 @@ namespace TB_QuestGame
 
         }
 
-        public Character(string name, RaceType race, HeightType height /*,SanityType sanity*/)
+        public Character(string name, RaceType race, HeightType height ,SanityType sanity)
         {
             _name = name;
             _race = race;
             _height = height;
-            //_sanity = sanity;
+            _sanity = sanity;
         }
 
         #endregion

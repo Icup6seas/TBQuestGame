@@ -21,13 +21,13 @@ namespace TB_QuestGame
 
         #endregion
 
-
         #region FIELDS
 
         //
         // declare game objects for the ConsoleView object to use
         //
         Wonderer _gameWonderer;
+        Home _gameHome;
 
         ViewStatus _viewStatus;
 
@@ -42,9 +42,12 @@ namespace TB_QuestGame
         /// <summary>
         /// default constructor to create the console view objects
         /// </summary>
-        public ConsoleView(Wonderer gameWonderer)
+        public ConsoleView(Wonderer gameWonderer, Home gameHome)
         {
             _gameWonderer = gameWonderer;
+            _gameHome = gameHome;
+
+            _viewStatus = ViewStatus.WondererInitialization;
 
             InitializeDisplay();
         }
@@ -92,13 +95,21 @@ namespace TB_QuestGame
         public WondererAction GetActionMenuChoice(Menu menu)
         {
             WondererAction choosenAction = WondererAction.None;
+            Console.CursorVisible = false;
 
-            //
-            // TODO validate menu choices
-            //
-            ConsoleKeyInfo keyPressedInfo = Console.ReadKey();
-            char keyPressed = keyPressedInfo.KeyChar;
+            //creates a array of valid keys from the dictionary
+            char[] validKeys = menu.MenuChoices.Keys.ToArray();
+
+            //validation of key pressed in MenuChoices dictionary
+            char keyPressed;
+            do
+            {
+                ConsoleKeyInfo keyPressedInfo = Console.ReadKey(true);
+                keyPressed = keyPressedInfo.KeyChar;
+            } while (!validKeys.Contains(keyPressed));
+
             choosenAction = menu.MenuChoices[keyPressed];
+            Console.CursorVisible = false;
 
             return choosenAction;
         }
@@ -170,6 +181,14 @@ namespace TB_QuestGame
             Enum.TryParse<Character.HeightType>(Console.ReadLine(), out heightType);
 
             return heightType;
+        }
+
+        public Character.SanityType GetSanity()
+        {
+            Character.SanityType sanityType;
+            Enum.TryParse<Character.SanityType>(Console.ReadLine(), out sanityType);
+
+            return sanityType;
         }
 
         /// <summary>
@@ -467,6 +486,13 @@ namespace TB_QuestGame
             Wonderer.Height = GetHeight();
 
             //
+            // get sanity
+            //
+            DisplayGamePlayScreen("A mind is a terrible thing to waste.", Text.InitializeMissionGetWondererSanity(Wonderer), ActionMenu.MissionIntro, "");
+            DisplayInputBoxPrompt($"{Wonderer.Name}, I can only describe myself as feeling... ");
+            Wonderer.Sanity = GetSanity();
+
+            //
             // get Wonderer's race
             //
             DisplayGamePlayScreen("They can't take away who I am, but they might be able to change what I will become.", Text.InitializeMissionGetWondererRace(Wonderer), ActionMenu.MissionIntro, "");
@@ -484,11 +510,17 @@ namespace TB_QuestGame
             return Wonderer;
         }
 
+        public void DisplayListOfHomeLocations()
+        {
+            DisplayGamePlayScreen("List: Home Locations", Text.ListHomeLocations(_gameHome.HomeLocations), ActionMenu.MainMenu, "");
+        }
+
         #region ----- display responses to menu action choices -----
 
         public void DisplayWondererInfo()
         {
-            DisplayGamePlayScreen("Wonderer Information", Text.WondererInfo(_gameWonderer), ActionMenu.MainMenu, "");
+            //HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+            DisplayGamePlayScreen("Wonderer Information", Text.WondererInfo(_gameWonderer /*, currentLocation*/), ActionMenu.MainMenu, "");
         }
 
         #endregion

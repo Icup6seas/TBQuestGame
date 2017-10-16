@@ -38,7 +38,11 @@ namespace TB_QuestGame
             MenuChoices = new Dictionary<char, WondererAction>()
                 {
                     { '1', WondererAction.WondererInfo },
-                    { '2', WondererAction.Exit }
+                    { '2', WondererAction.LookAround },
+                    { '3', WondererAction.Travel },
+                    { '4', WondererAction.WondererLocationsVisited },
+                    { '5', WondererAction.ListHomeLocations },
+                    { '0', WondererAction.Exit }
                 }
         };
 

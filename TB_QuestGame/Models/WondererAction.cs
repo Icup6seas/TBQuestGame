@@ -20,10 +20,11 @@ namespace TB_QuestGame
         PutDownItem,
         PutDownTreasure,
         Travel,
+        WondererLocationsVisited,
         WondererInfo,
         WondererInventory,
         WondererTreasure,
-        ListDestinations,
+        ListHomeLocations,
         ListItems,
         ListTreasures,
         Exit
