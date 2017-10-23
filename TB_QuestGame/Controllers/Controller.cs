@@ -116,6 +116,10 @@ namespace TB_QuestGame
                         _gameConsoleView.DisplayListOfHomeLocations();
                         break;
 
+                    case WondererAction.LookAround:
+                        _gameConsoleView.DisplayLookAround();
+                        break;
+
                     case WondererAction.Exit:
                         _playingGame = false;
                         break;

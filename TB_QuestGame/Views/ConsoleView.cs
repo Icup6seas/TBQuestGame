@@ -510,6 +510,12 @@ namespace TB_QuestGame
             return Wonderer;
         }
 
+        public void DisplayLookAround()
+        {
+            HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+            DisplayGamePlayScreen("I am currently in the ", Text.LookAround(currentHomeLocation), ActionMenu.MainMenu, "");
+        }
+
         public void DisplayListOfHomeLocations()
         {
             DisplayGamePlayScreen("List: Home Locations", Text.ListHomeLocations(_gameHome.HomeLocations), ActionMenu.MainMenu, "");
@@ -519,8 +525,8 @@ namespace TB_QuestGame
 
         public void DisplayWondererInfo()
         {
-            //HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
-            DisplayGamePlayScreen("Wonderer Information", Text.WondererInfo(_gameWonderer /*, currentLocation*/), ActionMenu.MainMenu, "");
+            HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+            DisplayGamePlayScreen("Wonderer Information", Text.WondererInfo(_gameWonderer, currentHomeLocation), ActionMenu.MainMenu, "");
         }
 
         #endregion

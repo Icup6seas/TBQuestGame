@@ -13,7 +13,7 @@ namespace TB_QuestGame.Assets
             new HomeUnivLocation
             {
                 CommonName = "Front Enterance",
-                HomeLocationID = 1,
+                HomeLocationID = 0,
                 HomeLocation = "Decrepit Main Enterance",
                 Description = "Slamming the door shut. You brace it with your back and you instinctively " +
                     "scan the room for your next plan, where to run, where to hide, what you can use as a " +
@@ -33,7 +33,7 @@ namespace TB_QuestGame.Assets
             new HomeUnivLocation
             {
                 CommonName = "Living Room",
-                HomeLocationID = 2,
+                HomeLocationID = 1,
                 HomeLocation = "North-east corner of the room",
                 Description = "Hidden in the far right corner of the room is a well used fireplace. \n",
                 GeneralContents = "In the mound of ashes you see a handle of a metal fire poker. " +
@@ -46,7 +46,7 @@ namespace TB_QuestGame.Assets
             new HomeUnivLocation
             {
                 CommonName = "Master Bedroom",
-                HomeLocationID = 3,
+                HomeLocationID = 2,
                 HomeLocation = "",
                 Description = "",
                 GeneralContents = "",
@@ -57,7 +57,7 @@ namespace TB_QuestGame.Assets
             new HomeUnivLocation
             {
                 CommonName = "Guest Bedroom",
-                HomeLocationID = 4,
+                HomeLocationID = 3,
                 HomeLocation = "",
                 Description = "",
                 GeneralContents = "",
@@ -68,7 +68,7 @@ namespace TB_QuestGame.Assets
             new HomeUnivLocation
             {
                 CommonName = "Office",
-                HomeLocationID = 5,
+                HomeLocationID = 4,
                 HomeLocation = "",
                 Description = "",
                 GeneralContents = "",
@@ -79,7 +79,7 @@ namespace TB_QuestGame.Assets
             new HomeUnivLocation
             {
                 CommonName = "Restroom",
-                HomeLocationID = 6,
+                HomeLocationID = 5,
                 HomeLocation = "",
                 Description = "",
                 GeneralContents = "",

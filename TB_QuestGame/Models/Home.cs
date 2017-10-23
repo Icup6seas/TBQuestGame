@@ -63,18 +63,18 @@ namespace TB_QuestGame
             }
         }
 
-        //public bool IsAccessibleLocation(int homeLocationID)
-        //{
-        //    HomeUnivLocation homeLocation = GetHomeLocationByID(homeLocationID);
-        //    if (homeLocation.Accessable == true)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool IsAccessibleLocation(int homeLocationID)
+        {
+            HomeUnivLocation homeLocation = GetHomeLocationByID(homeLocationID);
+            if (homeLocation.Accessable == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public int GetMaxHomeLocationID()
         {
@@ -91,26 +91,26 @@ namespace TB_QuestGame
             return MadID;
         }
 
-        //public HomeUnivLocation GetHomeLocationByID(int ID)
-        //{
-        //    HomeUnivLocation homeLocation = null;
+        public HomeUnivLocation GetHomeLocationByID(int ID)
+        {
+            HomeUnivLocation homeLocation = null;
 
-        //    foreach (HomeUnivLocation location in _homeLocations)
-        //    {
-        //        if (location.HomeLocationID == ID)
-        //        {
-        //            homeLocation = location;
-        //        }
-        //    }
+            foreach (HomeUnivLocation location in _homeLocations)
+            {
+                if (location.HomeLocationID == ID)
+                {
+                    homeLocation = location;
+                }
+            }
 
-        //    if (homeLocation == null)
-        //    {
-        //        string messageResponse = $"The home location {ID} does not exist in the current Home.";
-        //        throw new ArgumentException(ID.ToString(), messageResponse);
-        //    }
+            if (homeLocation == null)
+            {
+                string messageResponse = $"The home location {ID} does not exist in the current Home.";
+                throw new ArgumentException(ID.ToString(), messageResponse);
+            }
 
-        //    return homeLocation;
-        //}
+            return homeLocation;
+        }
 
         #endregion
     }

@@ -45,7 +45,7 @@ namespace TB_QuestGame
         #region FIELDS
 
         private string _name;
-        //private int _homeLocationID;
+        private int _homeLocationID;
         private int _age;
         private RaceType _race;
         private HeightType _height;
@@ -61,11 +61,11 @@ namespace TB_QuestGame
             set { _name = value; }
         }
 
-        //public int HomeLocationID
-        //{
-        //    get { return _homeLocationID; }
-        //    set { _homeLocationID = value; }
-        //}
+        public int HomeLocationID
+        {
+            get { return _homeLocationID; }
+            set { _homeLocationID = value; }
+        }
 
         public int Age
         {

@@ -177,7 +177,7 @@ namespace TB_QuestGame
 
         #region MAIN MENU ACTION SCREENS
 
-        public static string WondererInfo(Wonderer gameWonderer /*, HomeUnivLocation currentLocation*/)
+        public static string WondererInfo(Wonderer gameWonderer, HomeUnivLocation currentHomeLocation)
         {
             string messageBoxText =
                 $"\tWonderer Name... {gameWonderer.Name}\n" +
@@ -185,19 +185,19 @@ namespace TB_QuestGame
                 $"\tWonderer Race... {gameWonderer.Race}\n" +
                 $"\tWonderer Height... {gameWonderer.Height}\n" +
                 $"\tWonderer Sanity... {gameWonderer.Sanity}\n" +
-                //$"\tCurrent Location... {currentLocation.CommonName}\n" +
+                $"\tCurrent Location... {currentHomeLocation.CommonName}\n" +
                 " \n";
 
             return messageBoxText;
         }
 
-        //public static string CurrentLocationInfo(HomeUnivLocation homeUnivLocation)
-        //{
-        //    string messageBoxText = $"Current Location: {homeUnivLocation.CommonName}\n" +
-        //        " \n" + homeUnivLocation.Description;
+        public static string CurrentHomeLocationInfo(HomeUnivLocation homeUnivLocation)
+        {
+            string messageBoxText = $"Current Location: {homeUnivLocation.CommonName}\n" +
+                " \n" + homeUnivLocation.Description;
 
-        //    return messageBoxText;
-        //}
+            return messageBoxText;
+        }
 
         public static string LookAround(HomeUnivLocation homeUnivLocation)
         {
