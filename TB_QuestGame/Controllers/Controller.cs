@@ -16,6 +16,7 @@ namespace TB_QuestGame
         private ConsoleView _gameConsoleView;
         private Wonderer _gameWonderer;
         private Home _gameHome;
+        private Home _homeLocation;
         private bool _playingGame;
 
         #endregion
@@ -91,7 +92,7 @@ namespace TB_QuestGame
             //
             // prepare game play screen
             //
-            _gameConsoleView.DisplayGamePlayScreen("The House", Text.CurrrentLocationInfo(), ActionMenu.MainMenu, "");
+            _gameConsoleView.DisplayGamePlayScreen("The House", Text.InitialLocationInfo(), ActionMenu.MainMenu, "");
 
             //
             // game loop

@@ -38,7 +38,7 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
-        public static string CurrrentLocationInfo()
+        public static string InitialLocationInfo()
         {
             string messageBoxText =
             "After racheting the deadbolt, you brace the door with your body, readying " +
@@ -244,6 +244,45 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
+        public static string Travel(Wonderer gamewonderer, List<HomeUnivLocation> homeUnivLocations)
+        {
+            string messageBoxText = 
+                $"{gamewonderer.Name}, wake up!!! I need to move, but where to?! \n" +
+                " \n" +
+                "Enter the numnber location you want to run to. \n" +
+                " \n" +
+
+                "ID".PadRight(10) + "Name".PadRight(30) + "Accessible".PadRight(10) + "\n" +
+                "---".PadRight(10) + "----------------------".PadRight(30) + "-------".PadRight(10) + "\n";
+
+            string homeLocationList = null;
+            foreach (HomeUnivLocation homeUnivLocation in homeUnivLocations)
+            {
+                if (homeUnivLocation.HomeLocationID != gamewonderer.HomeLocationID)
+                {
+                    homeLocationList +=
+                        $"{homeUnivLocation.HomeLocationID}".PadRight(10) +
+                        $"{homeUnivLocation.CommonName}".PadRight(30) +
+                        $"{homeUnivLocation.Accessable}".PadRight(10) +
+                        Environment.NewLine;
+                }
+            }
+
+            messageBoxText += homeLocationList;
+
+            return messageBoxText;
+        }
+
+        public static string CurrentLocationInfo(HomeUnivLocation homeUnivLocation)
+        {
+            string messageBoxText =
+                $"I am in the {homeUnivLocation.CommonName} \n" +
+                " \n" +
+                homeUnivLocation.Description;
+
+            return messageBoxText;
+        }
+
         public static List<string> StatusBox(Wonderer wonderer)
         {
             List<string> statusBoxText = new List<string>();
@@ -253,30 +292,6 @@ namespace TB_QuestGame
 
             return statusBoxText;
         }
-
-        //public static string Travel(int currentSpaceTimeLocationId, List<SpaceTimeLocation> spaceTimeLocations)
-        //{
-        //    string messageBoxText =
-        //        $"{gameWonderer.Name}, Aion Base will need to know the name of the new location.\n" +
-        //        " \n" +
-        //        "Enter the ID number of your desired location from the table below.\n" +
-        //        " \n";
-
-
-        //    string spaceTimeLocationList = null;
-
-        //    foreach (SpaceTimeLocation spaceTimeLocation in spaceTimeLocations)
-        //    {
-        //        if (race != Character.RaceType.None)
-        //        {
-        //            raceList += $"\t{race}\n";
-        //        }
-        //    }
-
-        //    messageBoxText += raceList;
-
-        //    return messageBoxText;
-        //}
 
         #endregion
     }
