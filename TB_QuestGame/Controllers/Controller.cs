@@ -16,7 +16,7 @@ namespace TB_QuestGame
         private ConsoleView _gameConsoleView;
         private Wonderer _gameWonderer;
         private Home _gameHome;
-        private HomeUnivLocation _homeLocation;
+        private HomeUnivLocation _currentLocation;
         private bool _playingGame;
 
         #endregion
@@ -92,14 +92,17 @@ namespace TB_QuestGame
             //
             // prepare game play screen
             //
-            _homeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
-            _gameConsoleView.DisplayGamePlayScreen("The House", Text.CurrentLocationInfo(_homeLocation), ActionMenu.MainMenu, "");
+            _currentLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+            _gameConsoleView.DisplayGamePlayScreen("The House", Text.CurrentLocationInfo(_currentLocation), ActionMenu.MainMenu, "");
 
             //
             // game loop
             //
             while (_playingGame)
             {
+
+                UpdateGameStatus();
+
                 WondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.MainMenu);
 
                 //
@@ -125,10 +128,14 @@ namespace TB_QuestGame
                     case WondererAction.Travel:
 
                         _gameWonderer.HomeLocationID = _gameConsoleView.DisplayGetNextHomeLocation();
-                        _homeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+                        _currentLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
 
-                        _gameConsoleView.DisplayGamePlayScreen("Current Location", Text.CurrentHomeLocationInfo(_homeLocation),
+                        _gameConsoleView.DisplayGamePlayScreen("Current Location", Text.CurrentHomeLocationInfo(_currentLocation),
                             ActionMenu.MainMenu, "");
+                        break;
+
+                    case WondererAction.WondererLocationsVisited:
+                        _gameConsoleView.DisplayLocationsVisited();
                         break;
 
                     case WondererAction.Exit:
@@ -158,6 +165,48 @@ namespace TB_QuestGame
             _gameWonderer.Race = Wonderer.Race;
             _gameWonderer.Height = Wonderer.Height;
             _gameWonderer.Sanity = Wonderer.Sanity;
+
+            _gameWonderer.Health = 100;
+            _gameWonderer.Sanity = 100;
+            _gameWonderer.Lives = 3;
+        }
+
+        private void UpdateGameStatus()
+        {
+            if (!_gameWonderer.HasVisited(_currentLocation.HomeLocationID))
+            {
+                _gameWonderer.HomeLocationsVisited.Add(_currentLocation.HomeLocationID);
+
+                //_gameWonderer.ExperiencePoints += _currentLocation.ExperiencePoints;
+            }
+
+            if (_gameWonderer.HomeLocationID >= 1)
+            {
+                _gameWonderer.Health -= 5;
+                _gameWonderer.Sanity -= 10;
+
+                if (_gameWonderer.Health <= 0)
+                {
+                    _gameWonderer.Lives -= 1;
+                    Console.WriteLine("You have body has been too tortured, you have died!");
+
+                    if (_gameWonderer.Health <= 0)
+                    {
+                        _gameWonderer.Health += 100;
+                    }
+                }
+
+                if (_gameWonderer.Sanity <= 0)
+                {
+                    _gameWonderer.Lives -= 1;
+                    Console.WriteLine("You have mind couldn't handle the pressure, you have died!");
+
+                    if (_gameWonderer.Sanity <= 0)
+                    {
+                        _gameWonderer.Sanity += 100;
+                    }
+                }
+            }
         }
 
         #endregion

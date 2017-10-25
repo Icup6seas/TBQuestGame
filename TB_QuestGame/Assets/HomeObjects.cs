@@ -26,7 +26,7 @@ namespace TB_QuestGame.Assets
                 "a severly splintered entertainment center to your left, against the wall. Also, what you think " +
                 "looks like a couch left over towards the wall ahead of you. \n",
                 Accessable = true,
-                SanityPoints = -10
+                //SanityPoints = -10
 
             },
 
@@ -40,7 +40,7 @@ namespace TB_QuestGame.Assets
                     "In the mound of ashes you see a handle of a metal fire poker. No wood left to light " +
                     "these dark times. \n",
                 Accessable = true,
-                SanityPoints = -10
+                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -51,7 +51,7 @@ namespace TB_QuestGame.Assets
                 Description = "",
                 GeneralContents = "",
                 Accessable = false,
-                SanityPoints = -10
+                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -62,7 +62,7 @@ namespace TB_QuestGame.Assets
                 Description = "",
                 GeneralContents = "",
                 Accessable = false,
-                SanityPoints = -10
+                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -73,7 +73,7 @@ namespace TB_QuestGame.Assets
                 Description = "",
                 GeneralContents = "",
                 Accessable = false,
-                SanityPoints = -10
+                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -84,7 +84,7 @@ namespace TB_QuestGame.Assets
                 Description = "",
                 GeneralContents = "",
                 Accessable = false,
-                SanityPoints = -10
+                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -95,7 +95,7 @@ namespace TB_QuestGame.Assets
                 Description = "",
                 GeneralContents = "",
                 Accessable = false,
-                SanityPoints = -10
+                //SanityPoints = -10
             }
         };
     }

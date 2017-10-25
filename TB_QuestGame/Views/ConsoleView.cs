@@ -183,13 +183,13 @@ namespace TB_QuestGame
             return heightType;
         }
 
-        public Character.SanityType GetSanity()
-        {
-            Character.SanityType sanityType;
-            Enum.TryParse<Character.SanityType>(Console.ReadLine(), out sanityType);
+        //public Character.SanityType GetSanity()
+        //{
+        //    Character.SanityType sanityType;
+        //    Enum.TryParse<Character.SanityType>(Console.ReadLine(), out sanityType);
 
-            return sanityType;
-        }
+        //    return sanityType;
+        //}
 
         /// <summary>
         /// display splash screen
@@ -488,9 +488,9 @@ namespace TB_QuestGame
             //
             // get sanity
             //
-            DisplayGamePlayScreen("A mind is a terrible thing to waste.", Text.InitializeMissionGetWondererSanity(Wonderer), ActionMenu.MissionIntro, "");
-            DisplayInputBoxPrompt($"{Wonderer.Name}, I can only describe myself as feeling... ");
-            Wonderer.Sanity = GetSanity();
+            //DisplayGamePlayScreen("A mind is a terrible thing to waste.", Text.InitializeMissionGetWondererSanity(Wonderer), ActionMenu.MissionIntro, "");
+            //DisplayInputBoxPrompt($"{Wonderer.Name}, I can only describe myself as feeling... ");
+            //Wonderer.Sanity = GetSanity();
 
             //
             // get Wonderer's race
@@ -550,6 +550,17 @@ namespace TB_QuestGame
             }
 
             return homeLocationID;
+        }
+
+        public void DisplayLocationsVisited()
+        {
+            List<HomeUnivLocation> visitedHomeLocations = new List<HomeUnivLocation>();
+            foreach (int homeLocationID in _gameWonderer.HomeLocationsVisited)
+            {
+                visitedHomeLocations.Add(_gameHome.GetHomeLocationByID(homeLocationID));
+            }
+
+            DisplayGamePlayScreen("Home Locations Visited", Text.VisitedLocations(visitedHomeLocations), ActionMenu.MainMenu, "");
         }
 
             public void DisplayListOfHomeLocations()
