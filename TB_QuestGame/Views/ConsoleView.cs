@@ -516,21 +516,57 @@ namespace TB_QuestGame
             DisplayGamePlayScreen("I am currently in the ", Text.LookAround(currentHomeLocation), ActionMenu.MainMenu, "");
         }
 
-        public void DisplayListOfHomeLocations()
+        public int DisplayGetNextHomeLocation()
         {
-            DisplayGamePlayScreen("List: Home Locations", Text.ListHomeLocations(_gameHome.HomeLocations), ActionMenu.MainMenu, "");
+            int homeLocationID = 0;
+            bool validHomeLocationID = false;
+
+            DisplayGamePlayScreen("Go to another location", Text.Travel(_gameWonderer, _gameHome.HomeLocations),
+                ActionMenu.MainMenu, "");
+
+            while (!validHomeLocationID)
+            {
+                GetInteger($"{_gameWonderer.Name}! Wake up! Where am I going to go!?: ", 1,
+                    _gameHome.GetMaxHomeLocationID(), out homeLocationID);
+
+                if (_gameHome.IsValidHomeLocationID(homeLocationID))
+                {
+
+
+                    if (_gameHome.GetHomeLocationByID(homeLocationID).Accessable)
+                    {
+                        validHomeLocationID = true;
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("I can't go there! Try again! Quickly!!!");
+                    }
+                }
+                else
+                {
+                    DisplayInputErrorMessage("{Please! I need to enter a correct Location ID, Try again!");
+                }
+            }
+
+            return homeLocationID;
         }
 
-        #region ----- display responses to menu action choices -----
+            public void DisplayListOfHomeLocations()
+            {
+                DisplayGamePlayScreen("List: Home Locations", Text.ListHomeLocations(_gameHome.HomeLocations), ActionMenu.MainMenu, "");
+            }
 
-        public void DisplayWondererInfo()
-        {
-            HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
-            DisplayGamePlayScreen("Wonderer Information", Text.WondererInfo(_gameWonderer, currentHomeLocation), ActionMenu.MainMenu, "");
+            #region ----- display responses to menu action choices -----
+
+            public void DisplayWondererInfo()
+            {
+                HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+                DisplayGamePlayScreen("Wonderer Information", Text.WondererInfo(_gameWonderer, currentHomeLocation), ActionMenu.MainMenu, "");
+            }
+
+            #endregion
+
+            #endregion
         }
-
-        #endregion
-
-        #endregion
     }
-}

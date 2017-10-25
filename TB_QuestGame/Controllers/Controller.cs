@@ -16,7 +16,7 @@ namespace TB_QuestGame
         private ConsoleView _gameConsoleView;
         private Wonderer _gameWonderer;
         private Home _gameHome;
-        private Home _homeLocation;
+        private HomeUnivLocation _homeLocation;
         private bool _playingGame;
 
         #endregion
@@ -92,7 +92,8 @@ namespace TB_QuestGame
             //
             // prepare game play screen
             //
-            _gameConsoleView.DisplayGamePlayScreen("The House", Text.InitialLocationInfo(), ActionMenu.MainMenu, "");
+            _homeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+            _gameConsoleView.DisplayGamePlayScreen("The House", Text.CurrentLocationInfo(_homeLocation), ActionMenu.MainMenu, "");
 
             //
             // game loop
@@ -119,6 +120,15 @@ namespace TB_QuestGame
 
                     case WondererAction.LookAround:
                         _gameConsoleView.DisplayLookAround();
+                        break;
+
+                    case WondererAction.Travel:
+
+                        _gameWonderer.HomeLocationID = _gameConsoleView.DisplayGetNextHomeLocation();
+                        _homeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+
+                        _gameConsoleView.DisplayGamePlayScreen("Current Location", Text.CurrentHomeLocationInfo(_homeLocation),
+                            ActionMenu.MainMenu, "");
                         break;
 
                     case WondererAction.Exit:

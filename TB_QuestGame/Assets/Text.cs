@@ -244,9 +244,31 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
+        public static string VisitedLocations(IEnumerable<HomeUnivLocation> homeLocations)
+        {
+            string messageBoxText = "Home Locations Visited\n" +
+                " \n" +
+
+                "ID".PadRight(10) + "Name".PadRight(30) + "\n" +
+                "---".PadRight(10) + "----------------------".PadRight(30) + "\n";
+
+            string homeLocationList = null;
+            foreach (HomeUnivLocation homeLocation in homeLocations)
+            {
+                homeLocationList +=
+                    $"{homeLocation.HomeLocationID}".PadRight(10) +
+                        $"{homeLocation.CommonName}".PadRight(30) +
+                        Environment.NewLine;
+            }
+
+            messageBoxText += homeLocationList;
+
+            return messageBoxText;
+        }
+
         public static string Travel(Wonderer gamewonderer, List<HomeUnivLocation> homeUnivLocations)
         {
-            string messageBoxText = 
+            string messageBoxText =
                 $"{gamewonderer.Name}, wake up!!! I need to move, but where to?! \n" +
                 " \n" +
                 "Enter the numnber location you want to run to. \n" +

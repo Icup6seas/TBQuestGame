@@ -18,11 +18,17 @@ namespace TB_QuestGame
 
         #region FIELDS
 
+        private List<int> _homeLocationsVisited;
 
         #endregion
         
         #region PROPERTIES
         
+        public List<int> HomeLocationsVisited
+        {
+            get { return _homeLocationsVisited; }
+            set { _homeLocationsVisited = value; }
+        }
 
         #endregion
         
