@@ -44,7 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ActionMenu.cs" />
-    <Compile Include="Assets\HomeObjects.cs" />
+    <Compile Include="Assets\HomeObjectLocations.cs" />
+    <Compile Include="Assets\HomeObjectsGameObjects.cs" />
     <Compile Include="Assets\Text.cs" />
     <Compile Include="ConsoleUtilities\ConsoleLayout.cs" />
     <Compile Include="ConsoleUtilities\ConsoleTheme.cs" />

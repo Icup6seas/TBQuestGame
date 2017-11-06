@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TB_QuestGame.Assets
 {
-    public static class HomeObjects
+    public static partial class HomeObjectLocations
     {
-        public static IEnumerable<HomeUnivLocation> HomeLocations = new List<HomeUnivLocation>()
+        public static List<HomeUnivLocation> HomeLocations = new List<HomeUnivLocation>()
         {
             new HomeUnivLocation
             {

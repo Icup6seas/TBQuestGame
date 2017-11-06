@@ -9,9 +9,9 @@ namespace TB_QuestGame
     public enum WondererObjectType
     {
         Food,
-        Liquid,
+        Medicine,
         Weapon,
-        Treasure,
+        Stuff,
         Information
     }
 }

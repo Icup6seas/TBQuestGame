@@ -13,11 +13,18 @@ namespace TB_QuestGame
 
         //List of all Home Locations
         private List<HomeUnivLocation> _homeLocations;
+        private List<GameObject> _gameObjects;
 
         public List<HomeUnivLocation> HomeLocations
         {
             get { return _homeLocations; }
             set { _homeLocations = value; }
+        }
+
+        public List<GameObject> GameObjects
+        {
+            get { return _gameObjects; }
+            set { _gameObjects = value; }
         }
 
         #endregion
@@ -37,7 +44,9 @@ namespace TB_QuestGame
 
         private void InitializeHome()
         {
-            _homeLocations = HomeObjects.HomeLocations as List<HomeUnivLocation>;
+            _homeLocations = HomeObjectLocations.HomeLocations;
+            //_homeLocations = HomeObjectLocations.HomeLocations as List<HomeUnivLocation>;
+            _gameObjects = HomeObjects.gameObject;
         }
 
         #endregion
