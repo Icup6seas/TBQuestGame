@@ -42,6 +42,7 @@ namespace TB_QuestGame
                     { '3', WondererAction.Travel },
                     { '4', WondererAction.WondererLocationsVisited },
                     { '5', WondererAction.ListHomeLocations },
+                    { '6', WondererAction.ListGameObjects },
                     { '0', WondererAction.Exit }
                 }
         };

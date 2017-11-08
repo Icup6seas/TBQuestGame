@@ -25,6 +25,7 @@ namespace TB_QuestGame
         WondererInventory,
         WondererTreasure,
         ListHomeLocations,
+        ListGameObjects,
         ListItems,
         ListTreasures,
         Exit

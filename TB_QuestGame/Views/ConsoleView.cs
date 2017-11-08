@@ -132,29 +132,40 @@ namespace TB_QuestGame
             bool validResponse = false;
             integerChoice = 0;
 
+            bool validateRange = (minimumValue != 0 || maximumValue != 0);
+
             DisplayInputBoxPrompt(prompt);
             while (!validResponse)
             {
                 if (int.TryParse(Console.ReadLine(), out integerChoice))
                 {
-                    if (integerChoice >= minimumValue && integerChoice <= maximumValue)
+                    if (validateRange)
                     {
-                        validResponse = true;
+                        if (integerChoice >= minimumValue && integerChoice <= maximumValue)
+                        {
+                            validResponse = true;
+                        }
+                        else
+                        {
+                            ClearInputBox();
+                            DisplayInputErrorMessage($"You must enter a value between {minimumValue} and {maximumValue}. Please! Try again!");
+                            DisplayInputBoxPrompt(prompt);
+                        }
                     }
                     else
                     {
-                        ClearInputBox();
-                        DisplayInputErrorMessage($"You must enter an integer value between {minimumValue} and {maximumValue}. Please try again.");
-                        DisplayInputBoxPrompt(prompt);
+                        validResponse = true;
                     }
                 }
                 else
                 {
                     ClearInputBox();
-                    DisplayInputErrorMessage($"You must enter an integer value between {minimumValue} and {maximumValue}. Please try again.");
+                    DisplayInputErrorMessage("You must enter a vaild integer, try again!!!");
                     DisplayInputBoxPrompt(prompt);
                 }
             }
+
+            Console.CursorVisible = false;
 
             return true;
         }
@@ -552,6 +563,40 @@ namespace TB_QuestGame
             return homeLocationID;
         }
 
+        public int DisplayGetGameObjectToLookAt()
+        {
+            int gameObjectId = 0;
+            bool validGameObjectId = false;
+
+            List<GameObject> gameObjectsInHomeLocation = _gameHome.GetGameObjectsByHomeLocationId(_gameWonderer.HomeLocationID);
+
+            if (gameObjectsInHomeLocation.Count > 0)
+            {
+                DisplayGamePlayScreen("Look at a Object", Text.GameObjectsChooseList(gameObjectsInHomeLocation), ActionMenu.MainMenu, "");
+
+                while (!validGameObjectId)
+                {
+                    GetInteger($"Enter the ID number of the object you want to see: ", 0, 0, out gameObjectId);
+
+                    if (_gameHome.IsValidGameObjectByLocationId(gameObjectId, _gameWonderer.HomeLocationID))
+                    {
+                        validGameObjectId = true;
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("You have entered an invalid game object ID, please try again.");
+                    }
+                }
+            }
+            else
+            {
+                DisplayGamePlayScreen("Look at an Object", "It appears there are no game objects here.", ActionMenu.MainMenu, "");
+            }
+
+            return gameObjectId;
+        }
+
         public void DisplayLocationsVisited()
         {
             List<HomeUnivLocation> visitedHomeLocations = new List<HomeUnivLocation>();
@@ -563,21 +608,26 @@ namespace TB_QuestGame
             DisplayGamePlayScreen("Home Locations Visited", Text.VisitedLocations(visitedHomeLocations), ActionMenu.MainMenu, "");
         }
 
-            public void DisplayListOfHomeLocations()
-            {
-                DisplayGamePlayScreen("List: Home Locations", Text.ListHomeLocations(_gameHome.HomeLocations), ActionMenu.MainMenu, "");
-            }
-
-            #region ----- display responses to menu action choices -----
-
-            public void DisplayWondererInfo()
-            {
-                HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
-                DisplayGamePlayScreen("Wonderer Information", Text.WondererInfo(_gameWonderer, currentHomeLocation), ActionMenu.MainMenu, "");
-            }
-
-            #endregion
-
-            #endregion
+        public void DisplayListOfHomeLocations()
+        {
+            DisplayGamePlayScreen("List: Home Locations", Text.ListHomeLocations(_gameHome.HomeLocations), ActionMenu.MainMenu, "");
         }
+
+        public void DisplayListOfAllGameObjects()
+        {
+            DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameHome.GameObjects), ActionMenu.MainMenu, "");
+        }
+
+        #region ----- display responses to menu action choices -----
+
+        public void DisplayWondererInfo()
+        {
+            HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
+            DisplayGamePlayScreen("Wonderer Information", Text.WondererInfo(_gameWonderer, currentHomeLocation), ActionMenu.MainMenu, "");
+        }
+
+        #endregion
+
+        #endregion
     }
+}

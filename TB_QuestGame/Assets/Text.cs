@@ -244,6 +244,59 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
+        public static string ListAllGameObjects(IEnumerable<GameObject> gameObjects)
+        {
+            string messageBoxText =
+                "Game Objects\n" +
+                " \n" +
+
+                "ID".PadRight(10) +
+                "Name".PadRight(30) +
+                "Home Location Id".PadRight(10) + "\n" +
+                "---".PadRight(10) +
+                "----------------------".PadRight(30) +
+                "----------------------".PadRight(10) + "\n";
+
+            string gameObjectRows = null;
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObjectRows += 
+                    $"{gameObject.Id}".PadRight(10) +
+                    $"{gameObject.Name}".PadRight(30) +
+                    $"{gameObject.HomeLocationId}".PadRight(10) +
+                    Environment.NewLine;
+            }
+
+            messageBoxText += gameObjectRows;
+
+            return messageBoxText;
+        }
+
+        public static string GameObjectsChooseList(IEnumerable<GameObject> gameObjects)
+        {
+            string messageBoxText =
+                "Game Objects\n" +
+                " \n" +
+
+                "ID".PadRight(10) +
+                "Name".PadRight(30) + "\n" +
+                "---".PadRight(10) +
+                "----------------------".PadRight(30) + "\n";
+
+            string gameObjectRows = null;
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObjectRows +=
+                    $"{gameObject.Id}".PadRight(10) +
+                    $"{gameObject.Name}".PadRight(30) +
+                    Environment.NewLine;
+            }
+
+            messageBoxText += gameObjectRows;
+
+            return messageBoxText;
+        }
+
         public static string VisitedLocations(IEnumerable<HomeUnivLocation> homeLocations)
         {
             string messageBoxText = "Home Locations Visited\n" +

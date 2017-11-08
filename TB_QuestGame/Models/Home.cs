@@ -72,6 +72,64 @@ namespace TB_QuestGame
             }
         }
 
+        public bool IsValidGameObjectByLocationId(int gameObjectId, int currentHomeLocation)
+        {
+            List<int> gameObjectIds = new List<int>();
+
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.HomeLocationId == currentHomeLocation)
+                {
+                    gameObjectIds.Add(gameObject.Id);
+                }
+            }
+
+            if (gameObjectIds.Contains(gameObjectId))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public GameObject GetGameObjectById(int Id)
+        {
+            GameObject gameObjectToReturn = null;
+
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.Id == Id)
+                {
+                    gameObjectToReturn = gameObject;
+                }
+            }
+
+            if (gameObjectToReturn == null)
+            {
+                string userMessage = $"The Game Object ID: {Id}, does not exist in the current Home.";
+                throw new ArgumentException(userMessage, Id.ToString());
+            }
+
+            return gameObjectToReturn;
+        }
+
+        public List<GameObject> GetGameObjectsByHomeLocationId(int homeLocationId)
+        {
+            List<GameObject> gameObjects = new List<GameObject>();
+
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.HomeLocationId == homeLocationId)
+                {
+                    gameObjects.Add(gameObject);
+                }
+            }
+
+            return gameObjects;
+        }
+
         public bool IsAccessibleLocation(int homeLocationID)
         {
             HomeUnivLocation homeLocation = GetHomeLocationByID(homeLocationID);

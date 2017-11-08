@@ -121,6 +121,10 @@ namespace TB_QuestGame
                         _gameConsoleView.DisplayListOfHomeLocations();
                         break;
 
+                    case WondererAction.ListGameObjects:
+                        _gameConsoleView.DisplayListOfAllGameObjects();
+                        break;
+
                     case WondererAction.LookAround:
                         _gameConsoleView.DisplayLookAround();
                         break;
