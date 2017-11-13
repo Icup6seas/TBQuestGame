@@ -295,6 +295,40 @@ namespace TB_QuestGame
             messageBoxText += gameObjectRows;
 
             return messageBoxText;
+
+        }
+
+        public static string LookAt(GameObject gameObject)
+        {
+            string messageBoxText = "";
+
+            messageBoxText =
+                $"{gameObject.Name}\n" +
+                " \n" +
+                gameObject.Description + " \n" +
+                " \n";
+
+            if (gameObject is WondererObject)
+            {
+                WondererObject wondererObject = gameObject as WondererObject;
+
+                messageBoxText += $"The {wondererObject.Name} has a value of {wondererObject.Value} and ";
+
+                if (wondererObject.CanInventory)
+                {
+                    messageBoxText += "may be added to your bag.";
+                }
+                else
+                {
+                    messageBoxText += "cannot be added to your bad.";
+                }
+            }
+            else
+            {
+                messageBoxText += $"The {gameObject.Name} cannot be added to your bad.";
+            }
+
+            return messageBoxText;
         }
 
         public static string VisitedLocations(IEnumerable<HomeUnivLocation> homeLocations)

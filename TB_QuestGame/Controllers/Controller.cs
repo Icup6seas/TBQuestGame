@@ -142,6 +142,10 @@ namespace TB_QuestGame
                         _gameConsoleView.DisplayLocationsVisited();
                         break;
 
+                    case WondererAction.LookAt:
+                        LookAtAction();
+                        break;
+
                     case WondererAction.Exit:
                         _playingGame = false;
                         break;
@@ -155,6 +159,18 @@ namespace TB_QuestGame
             // close the application
             //
             Environment.Exit(1);
+        }
+
+        private void LookAtAction()
+        {
+            int gameObjectToLookAtID = _gameConsoleView.DisplayGetGameObjectToLookAt();
+
+            if (gameObjectToLookAtID != 0)
+            {
+                GameObject gameObject = _gameHome.GetGameObjectById(gameObjectToLookAtID);
+
+                _gameConsoleView.DisplayGameObjectInfo(gameObject);
+            }
         }
 
         /// <summary>

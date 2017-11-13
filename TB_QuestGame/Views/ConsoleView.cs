@@ -524,7 +524,18 @@ namespace TB_QuestGame
         public void DisplayLookAround()
         {
             HomeUnivLocation currentHomeLocation = _gameHome.GetHomeLocationByID(_gameWonderer.HomeLocationID);
-            DisplayGamePlayScreen("I am currently in the ", Text.LookAround(currentHomeLocation), ActionMenu.MainMenu, "");
+
+            List<GameObject> gameObjectsInCurrentHomeLocation = _gameHome.GetGameObjectsByHomeLocationId(_gameWonderer.HomeLocationID);
+
+            string messageBoxText = Text.LookAround(currentHomeLocation) + Environment.NewLine + Environment.NewLine;
+            messageBoxText += Text.GameObjectsChooseList(gameObjectsInCurrentHomeLocation);
+
+            DisplayGamePlayScreen("I am currently in the ", messageBoxText, ActionMenu.MainMenu, "");
+        }
+
+        public void DisplayGameObjectInfo(GameObject gameObject)
+        {
+            DisplayGamePlayScreen("Current Location", Text.LookAt(gameObject), ActionMenu.MainMenu, "");
         }
 
         public int DisplayGetNextHomeLocation()

@@ -15,7 +15,7 @@ namespace TB_QuestGame
             {
                 Id = 1,
                 Name = "Bag of Tokens",
-                HomeLocationId = 2,
+                HomeLocationId = 1,
                 Description = "In a tattered pouch, there are some tokens to use for trade",
                 Type = WondererObjectType.Stuff,
                 Value = 100,
@@ -28,7 +28,7 @@ namespace TB_QuestGame
             {
                 Id = 2,
                 Name = "Stones",
-                HomeLocationId = 3,
+                HomeLocationId = 1,
                 Description = "Small but dense stones, possibly used with a sling-shot type weapon.",
                 Type = WondererObjectType.Stuff,
                 Value = 0,
@@ -41,7 +41,7 @@ namespace TB_QuestGame
             {
                 Id = 3,
                 Name = "Opium",
-                HomeLocationId = 3,
+                HomeLocationId = 2,
                 Description = "Small pouch of an Opiate extract used as a painkiller.",
                 Type = WondererObjectType.Medicine,
                 Value = 50,
