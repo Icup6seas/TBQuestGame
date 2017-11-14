@@ -320,7 +320,7 @@ namespace TB_QuestGame
                 }
                 else
                 {
-                    messageBoxText += "cannot be added to your bad.";
+                    messageBoxText += "cannot be added to your bag.";
                 }
             }
             else
@@ -388,6 +388,35 @@ namespace TB_QuestGame
                 $"I am in the {homeUnivLocation.CommonName} \n" +
                 " \n" +
                 homeUnivLocation.Description;
+
+            return messageBoxText;
+        }
+
+        public static string CurrentInventory(IEnumerable<WondererObject> inventory)
+        {
+            string messageBoxText = "";
+
+            messageBoxText =
+            "ID".PadRight(10) +
+            "Name".PadRight(30) +
+            "Type".PadRight(10) +
+            "\n" +
+            "---".PadRight(10) +
+            "----------------------------".PadRight(30) +
+            "----------------------".PadRight(10) +
+            "\n";
+            
+            string inventoryObjectRows = null;
+            foreach (WondererObject inventoryObject in inventory)
+            {
+                inventoryObjectRows +=
+                    $"{inventoryObject.Id}".PadRight(10) +
+                    $"{inventoryObject.Name}".PadRight(30) +
+                    $"{inventoryObject.Type}".PadRight(10) +
+                    Environment.NewLine;
+            }
+
+            messageBoxText += inventoryObjectRows;
 
             return messageBoxText;
         }

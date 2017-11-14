@@ -55,6 +55,9 @@ namespace TB_QuestGame
             _gameConsoleView = new ConsoleView(_gameWonderer, _gameHome);
             _playingGame = true;
 
+            _gameWonderer.Inventory.Add(_gameHome.GetGameObjectById(11) as WondererObject);
+            _gameWonderer.Inventory.Add(_gameHome.GetGameObjectById(12) as WondererObject);
+
             Console.CursorVisible = false;
         }
 
@@ -123,6 +126,10 @@ namespace TB_QuestGame
 
                     case WondererAction.WondererInfo:
                         _gameConsoleView.DisplayWondererInfo();
+                        break;
+
+                    case WondererAction.Inventory:
+                        _gameConsoleView.DisplayInventory();
                         break;
 
                     case WondererAction.ListHomeLocations:
@@ -215,7 +222,7 @@ namespace TB_QuestGame
 
             }
 
-            if (_gameWonderer.HomeLocationID >= 1)
+            if (_gameWonderer.HomeLocationID >= 2)
             {
                 //_gameWonderer.Health -= 5;
                 _gameWonderer.Sanity -= 2;

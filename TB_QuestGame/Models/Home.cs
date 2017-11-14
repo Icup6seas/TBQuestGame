@@ -46,7 +46,7 @@ namespace TB_QuestGame
         {
             _homeLocations = HomeObjectLocations.HomeLocations;
             //_homeLocations = HomeObjectLocations.HomeLocations as List<HomeUnivLocation>;
-            _gameObjects = HomeObjects.gameObject;
+            _gameObjects = HomeObjects.GameObject;
         }
 
         #endregion
@@ -57,9 +57,9 @@ namespace TB_QuestGame
         {
             List<int> homeLocationIDs = new List<int>();
 
-            foreach (HomeUnivLocation stl in _homeLocations)
+            foreach (HomeUnivLocation homeObj in _homeLocations)
             {
-                homeLocationIDs.Add(stl.HomeLocationID);
+                homeLocationIDs.Add(homeObj.HomeLocationID);
             }
 
             if (homeLocationIDs.Contains(homeLocationID))
@@ -145,17 +145,17 @@ namespace TB_QuestGame
 
         public int GetMaxHomeLocationID()
         {
-            int MadID = 0;
+            int MaxID = 0;
 
             foreach (HomeUnivLocation homeLocation in HomeLocations)
             {
-                if (homeLocation.HomeLocationID > MadID)
+                if (homeLocation.HomeLocationID > MaxID)
                 {
-                    MadID = homeLocation.HomeLocationID;
+                    MaxID = homeLocation.HomeLocationID;
                 }
             }
 
-            return MadID;
+            return MaxID;
         }
 
         public HomeUnivLocation GetHomeLocationByID(int ID)

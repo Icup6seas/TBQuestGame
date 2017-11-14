@@ -540,7 +540,7 @@ namespace TB_QuestGame
 
         public int DisplayGetNextHomeLocation()
         {
-            int homeLocationID = 0;
+            int homeLocationID = 1;
             bool validHomeLocationID = false;
 
             DisplayGamePlayScreen("Go to another location", Text.Travel(_gameWonderer, _gameHome.HomeLocations),
@@ -617,6 +617,11 @@ namespace TB_QuestGame
             }
 
             DisplayGamePlayScreen("Home Locations Visited", Text.VisitedLocations(visitedHomeLocations), ActionMenu.MainMenu, "");
+        }
+
+        public void DisplayInventory()
+        {
+            DisplayGamePlayScreen("Current Inventory", Text.CurrentInventory(_gameWonderer.Inventory), ActionMenu.MainMenu, "");
         }
 
         public void DisplayListOfHomeLocations()

@@ -9,7 +9,7 @@ namespace TB_QuestGame
     public static partial class HomeObjects
     {
 
-        public static List<GameObject> gameObject = new List<GameObject>()
+        public static List<GameObject> GameObject = new List<GameObject>()
         {
             new WondererObject
             {
@@ -47,7 +47,7 @@ namespace TB_QuestGame
                 Value = 0,
                 CanInventory = false,
                 IsConsumable = false,
-                IsVisible = true
+                IsVisible = true,
             },
 
             new WondererObject
@@ -132,8 +132,35 @@ namespace TB_QuestGame
             {
                 Id = 10,
                 Name = "Old Towel",
-                HomeLocationId = 5,
+                HomeLocationId = 5
+                ,
                 Description = "You can use this to further help your wounds.",
+                Type = WondererObjectType.Medicine,
+                Value = 0,
+                CanInventory = true,
+                IsConsumable = true,
+                IsVisible = true
+            },
+
+            new WondererObject
+            {
+                Id = 11,
+                Name = "Bandages",
+                HomeLocationId = 0,
+                Description = "Used to dress wounds.",
+                Type = WondererObjectType.Medicine,
+                Value = 0,
+                CanInventory = true,
+                IsConsumable = true,
+                IsVisible = true
+            },
+
+            new WondererObject
+            {
+                Id = 12,
+                Name = "Cocain",
+                HomeLocationId = 0,
+                Description = "Sometimes you need that extra KICK to survive.",
                 Type = WondererObjectType.Medicine,
                 Value = 0,
                 CanInventory = true,
