@@ -13,15 +13,15 @@ namespace TB_QuestGame
     {
         #region ENUMERABLES
 
-        public enum RaceType
-        {
-            None,
-            Human,
-            Beelzebub,
-            Stolas,
-            Buer,
-            Balrog
-        }
+        //public enum RaceType
+        //{
+        //    None,
+        //    Human,
+        //    Beelzebub,
+        //    Stolas,
+        //    Buer,
+        //    Balrog
+        //}
 
         public enum HeightType
         {
@@ -32,14 +32,14 @@ namespace TB_QuestGame
             Giant
         }
 
-        public enum SanityType
-        {
-            None,
-            Calm,
-            Fine,
-            Anxious,
-            FreakedOut,
-        }
+        //public enum SanityType
+        //{
+        //    None,
+        //    Calm,
+        //    //Fine,
+        //    Anxious,
+        //    FreakedOut,
+        //}
         #endregion
 
         #region FIELDS
@@ -47,9 +47,9 @@ namespace TB_QuestGame
         private string _name;
         private int _homeLocationID;
         private int _age;
-        private RaceType _race;
+        //private RaceType _race;
         private HeightType _height;
-        private SanityType _sanity;
+        //private SanityType _sanity;
 
         #endregion
 
@@ -73,11 +73,11 @@ namespace TB_QuestGame
             set { _age = value; }
         }
 
-        public RaceType Race
-        {
-            get { return _race; }
-            set { _race = value; }
-        }
+        //public RaceType Race
+        //{
+        //    get { return _race; }
+        //    set { _race = value; }
+        //}
 
         public HeightType Height
         {
@@ -85,11 +85,11 @@ namespace TB_QuestGame
             set { _height = value; }
         }
 
-        public SanityType Sanity
-        {
-            get { return _sanity; }
-            set { _sanity = value; }
-        }
+        //public SanityType Sanity
+        //{
+        //    get { return _sanity; }
+        //    set { _sanity = value; }
+        //}
 
         #endregion
 
@@ -100,12 +100,12 @@ namespace TB_QuestGame
 
         }
 
-        public Character(string name, RaceType race, HeightType height ,SanityType sanity)
+        public Character(string name, /*RaceType race,*/ HeightType height/*SanityType sanity*/)
         {
             _name = name;
-            _race = race;
+            //_race = race;
             _height = height;
-            _sanity = sanity;
+            //_sanity = sanity;
         }
 
         #endregion

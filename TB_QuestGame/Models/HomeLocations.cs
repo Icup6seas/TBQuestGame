@@ -16,7 +16,7 @@ namespace TB_QuestGame
         private string _description;
         private string _generalContents;
         private bool _accessable;
-        private int _sanityPoints;
+        //private int _sanityPoints;
 
         #endregion
 
@@ -58,11 +58,11 @@ namespace TB_QuestGame
             set { _accessable = value; }
         }
 
-        public int SanityPoints
-        {
-            get { return _sanityPoints; }
-            set { _sanityPoints = value; }
-        }
+        //public int SanityPoints
+        //{
+        //    get { return _sanityPoints; }
+        //    set { _sanityPoints = value; }
+        //}
 
         #endregion
 

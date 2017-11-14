@@ -89,28 +89,28 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
-        public static string InitializeMissionGetWondererRace(Wonderer gameWonderer)
-        {
-            string messageBoxText =
-                $"{gameWonderer.Name}...I can't stop saying that, it makes me happy. Now how would I \n" +
-                "What am I? \n" +
-                " \n" +
-                "...Enter your race...\n";
+        //public static string InitializeMissionGetWondererRace(Wonderer gameWonderer)
+        //{
+        //    string messageBoxText =
+        //        $"{gameWonderer.Name}...I can't stop saying that, it makes me happy. Now how would I \n" +
+        //        "What am I? \n" +
+        //        " \n" +
+        //        "...Enter your race...\n";
 
-            string raceList = null;
+        //    string raceList = null;
 
-            foreach (Character.RaceType race in Enum.GetValues(typeof(Character.RaceType)))
-            {
-                if (race != Character.RaceType.None)
-                {
-                    raceList += $"\t{race}\n";
-                }
-            }
+        //    foreach (Character.RaceType race in Enum.GetValues(typeof(Character.RaceType)))
+        //    {
+        //        if (race != Character.RaceType.None)
+        //        {
+        //            raceList += $"\t{race}\n";
+        //        }
+        //    }
 
-            messageBoxText += raceList;
+        //    messageBoxText += raceList;
 
-            return messageBoxText;
-        }
+        //    return messageBoxText;
+        //}
 
         public static string InitializeMissionGetWondererHeight(Wonderer gameWonderer)
         {
@@ -164,9 +164,9 @@ namespace TB_QuestGame
                 " \n" +
                 $"\tMy name is {gameWonderer.Name}\n" +
                 $"\tTime goes by so fast but I think I'm {gameWonderer.Age}\n" +
-                $"\tMost importantly, I am still a {gameWonderer.Race}\n" +
+                //$"\tMost importantly, I am still a {gameWonderer.Race}\n" +
                 //$"\tand that I am {gameWonderer.Sanity}\n" +
-                $"\tI feel like I am an average {gameWonderer.Race} and going to say I am fairly {gameWonderer.Height}\n" +
+                $"\tI am fairly {gameWonderer.Height}\n" +
                 " \n" +
                 "...Press any key to continue my struggle...";
 
@@ -182,7 +182,7 @@ namespace TB_QuestGame
             string messageBoxText =
                 $"\tWonderer Name... {gameWonderer.Name}\n" +
                 $"\tWonderer Age... {gameWonderer.Age}\n" +
-                $"\tWonderer Race... {gameWonderer.Race}\n" +
+                //$"\tWonderer Race... {gameWonderer.Race}\n" +
                 $"\tWonderer Height... {gameWonderer.Height}\n" +
                 //$"\tWonderer Sanity... {gameWonderer.Sanity}\n" +
                 $"\tCurrent Location... {currentHomeLocation.CommonName}\n" +

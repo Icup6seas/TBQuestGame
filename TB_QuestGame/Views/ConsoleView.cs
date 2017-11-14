@@ -174,13 +174,13 @@ namespace TB_QuestGame
         /// get a character race value from the user
         /// </summary>
         /// <returns>character race value</returns>
-        public Character.RaceType GetRace()
-        {
-            Character.RaceType raceType;
-            Enum.TryParse<Character.RaceType>(Console.ReadLine(), out raceType);
+        //public Character.RaceType GetRace()
+        //{
+        //    Character.RaceType raceType;
+        //    Enum.TryParse<Character.RaceType>(Console.ReadLine(), out raceType);
 
-            return raceType;
-        }
+        //    return raceType;
+        //}
 
         /// <summary>
         /// get a character height value from the user
@@ -506,9 +506,9 @@ namespace TB_QuestGame
             //
             // get Wonderer's race
             //
-            DisplayGamePlayScreen("They can't take away who I am, but they might be able to change what I will become.", Text.InitializeMissionGetWondererRace(Wonderer), ActionMenu.MissionIntro, "");
-            DisplayInputBoxPrompt($"Enter your race {Wonderer.Name}: ");
-            Wonderer.Race = GetRace();
+            //DisplayGamePlayScreen("They can't take away who I am, but they might be able to change what I will become.", Text.InitializeMissionGetWondererRace(Wonderer), ActionMenu.MissionIntro, "");
+            //DisplayInputBoxPrompt($"Enter your race {Wonderer.Name}: ");
+            //Wonderer.Race = GetRace();
 
             //
             // echo the Wonderer's info

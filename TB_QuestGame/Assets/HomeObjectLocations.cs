@@ -45,33 +45,33 @@ namespace TB_QuestGame.Assets
 
             new HomeUnivLocation
             {
-                CommonName = "Master Bedroom",
+                CommonName = "Kitchen",
                 HomeLocationID = 2,
-                HomeLocation = "",
-                Description = "",
-                GeneralContents = "",
-                Accessable = false,
+                HomeLocation = "An open kitchen, battered island in the middle, it's a little dark to see.",
+                Description = "No running water, hasn't been running for a long while now. Lots of draws around, I should take a look.",
+                GeneralContents = "Fixtures, cabinets, broken table",
+                Accessable = true,
                 //SanityPoints = -10
             },
 
             new HomeUnivLocation
             {
-                CommonName = "Guest Bedroom",
+                CommonName = "Master Bedroom",
                 HomeLocationID = 3,
-                HomeLocation = "",
-                Description = "",
-                GeneralContents = "",
+                HomeLocation = "First Door on the right, down the hallway.",
+                Description = "The door seems to be battered and broke, there might be something good in here, you use the sink pipe to pry the door open.",
+                GeneralContents = "Useless furnature but lots of drawers, I should take a look, ther migh be something of use...there is a bed",
                 Accessable = false,
                 //SanityPoints = -10
             },
 
             new HomeUnivLocation
             {
-                CommonName = "Office",
+                CommonName = "Childrens Bedroom",
                 HomeLocationID = 4,
-                HomeLocation = "",
-                Description = "",
-                GeneralContents = "",
+                HomeLocation = "Second Door on the Right, down the hallway",
+                Description = "Where children used to sleep, they are long gone by now.",
+                GeneralContents = "The breaking bed shook the door open. There are family photos on the ground, claw marks on the walls covered in what looks like old blood... wood, rope",
                 Accessable = false,
                 //SanityPoints = -10
             },
@@ -80,9 +80,9 @@ namespace TB_QuestGame.Assets
             {
                 CommonName = "Restroom",
                 HomeLocationID = 5,
-                HomeLocation = "",
-                Description = "",
-                GeneralContents = "",
+                HomeLocation = "Down the hall to the right of the Guest Bedroom.",
+                Description = "Looks like is has been used...a lot. Not much to use here but it is still worth the look. The opened when the bed was broken.",
+                GeneralContents = "old towel",
                 Accessable = false,
                 //SanityPoints = -10
             },
@@ -90,10 +90,10 @@ namespace TB_QuestGame.Assets
             new HomeUnivLocation
             {
                 CommonName = "Back Door",
-                HomeLocationID = 7,
-                HomeLocation = "",
-                Description = "",
-                GeneralContents = "",
+                HomeLocationID = 6,
+                HomeLocation = "Back of the house, behind the kitchen",
+                Description = "The was blown open with a rush of beasts in desperate search for human flesh and shelter...the sun is coming up.",
+                GeneralContents = "Nothing here but a door and some old shoes.",
                 Accessable = false,
                 //SanityPoints = -10
             }

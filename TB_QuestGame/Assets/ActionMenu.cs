@@ -48,16 +48,11 @@ namespace TB_QuestGame
                 }
         };
 
-        //public static Menu ManageWonderer = new Menu()
-        //{
-        //    MenuName = "ManageWonderer",
-        //    MenuTitle = "Manage Wonderer",
-        //    MenuChoices = new Dictionary<char, PlayerAction>()
-        //            {
-        //                PlayerAction.MissionSetup,
-        //                PlayerAction.WondererInfo,
-        //                PlayerAction.Exit
-        //            }
-        //};
+        public static Menu AdminMenu = new Menu()
+        {
+
+
+
+        };
     }
 }

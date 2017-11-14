@@ -59,7 +59,7 @@ namespace TB_QuestGame
             _homeLocationsVisited = new List<int>();
         }
 
-        public Wonderer(string name, RaceType race, HeightType height, SanityType sanity) : base(name, race, height, sanity)
+        public Wonderer(string name, /*RaceType race,*/ HeightType height /*SanityType sanity*/) : base(name, /*race,*/ height /*sanity*/)
         {
             _homeLocationsVisited = new List<int>();
         }
