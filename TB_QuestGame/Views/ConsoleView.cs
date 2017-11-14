@@ -621,12 +621,12 @@ namespace TB_QuestGame
 
         public void DisplayListOfHomeLocations()
         {
-            DisplayGamePlayScreen("List: Home Locations", Text.ListHomeLocations(_gameHome.HomeLocations), ActionMenu.MainMenu, "");
+            DisplayGamePlayScreen("List: Home Locations", Text.ListHomeLocations(_gameHome.HomeLocations), ActionMenu.AdminMenu, "");
         }
 
         public void DisplayListOfAllGameObjects()
         {
-            DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameHome.GameObjects), ActionMenu.MainMenu, "");
+            DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameHome.GameObjects), ActionMenu.AdminMenu, "");
         }
 
         #region ----- display responses to menu action choices -----

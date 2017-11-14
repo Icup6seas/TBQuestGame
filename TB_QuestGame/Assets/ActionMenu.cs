@@ -11,6 +11,17 @@ namespace TB_QuestGame
     /// </summary>
     public static class ActionMenu
     {
+
+        public enum CurrentMenu
+        {
+            MissionIntro,
+            InitializeMission,
+            MainMenu,
+            AdminMenu
+        }
+
+        public static CurrentMenu currentMenu = CurrentMenu.MainMenu;
+
         public static Menu MissionIntro = new Menu()
         {
             MenuName = "MissionIntro",
@@ -40,19 +51,26 @@ namespace TB_QuestGame
                     { '1', WondererAction.WondererInfo },
                     { '2', WondererAction.LookAround },
                     { '3', WondererAction.LookAt },
-                    { '4', WondererAction.Travel },
-                    { '5', WondererAction.WondererLocationsVisited },
-                    { '6', WondererAction.ListHomeLocations },
-                    { '7', WondererAction.ListGameObjects },
+                    //{ '4', WondererAction.PickUp },
+                    //{ '5', WondererAction.PutDown },
+                    //{ '6', WondererAction.Inventory },
+                    { '7', WondererAction.Travel },
+                    { '8', WondererAction.WondererLocationsVisited },
+                    { '9', WondererAction.AdminMenu },
                     { '0', WondererAction.Exit }
                 }
         };
 
         public static Menu AdminMenu = new Menu()
         {
-
-
-
+            MenuName = "AdminMenu",
+            MenuTitle = "Admin Menu",
+            MenuChoices = new Dictionary<char, WondererAction>()
+            {
+                {'1', WondererAction.ListHomeLocations },
+                {'2', WondererAction.ListGameObjects },
+                {'0', WondererAction.ReturnToMainMenu }
+            }
         };
     }
 }

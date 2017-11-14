@@ -103,7 +103,15 @@ namespace TB_QuestGame
 
                 UpdateGameStatus();
 
-                WondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.MainMenu);
+                if (ActionMenu.currentMenu == ActionMenu.CurrentMenu.MainMenu)
+                {
+                    WondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.MainMenu);
+                }
+                else if (ActionMenu.currentMenu == ActionMenu.CurrentMenu.AdminMenu)
+                {
+                    WondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.AdminMenu);
+                }
+                
 
                 //
                 // choose an action based on the user's menu choice
@@ -123,6 +131,16 @@ namespace TB_QuestGame
 
                     case WondererAction.ListGameObjects:
                         _gameConsoleView.DisplayListOfAllGameObjects();
+                        break;
+
+                    case WondererAction.AdminMenu:
+                        ActionMenu.currentMenu = ActionMenu.CurrentMenu.AdminMenu;
+                        _gameConsoleView.DisplayGamePlayScreen("Admin Menu", "Select an operation from the menu.", ActionMenu.AdminMenu, "");
+                        break;
+
+                    case WondererAction.ReturnToMainMenu:
+                        ActionMenu.currentMenu = ActionMenu.CurrentMenu.MainMenu;
+                        _gameConsoleView.DisplayGamePlayScreen("Current Location", Text.CurrentHomeLocationInfo(_currentLocation),ActionMenu.MainMenu, "");
                         break;
 
                     case WondererAction.LookAround:
@@ -200,7 +218,7 @@ namespace TB_QuestGame
             if (_gameWonderer.HomeLocationID >= 1)
             {
                 //_gameWonderer.Health -= 5;
-                _gameWonderer.Sanity -= 5;
+                _gameWonderer.Sanity -= 2;
 
                 if (_gameWonderer.Health <= 0 || _gameWonderer.Sanity <= 0)
                 {

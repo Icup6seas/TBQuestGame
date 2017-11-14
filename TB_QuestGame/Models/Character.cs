@@ -36,7 +36,7 @@ namespace TB_QuestGame
         //{
         //    None,
         //    Calm,
-        //    //Fine,
+        //    Fine,
         //    Anxious,
         //    FreakedOut,
         //}

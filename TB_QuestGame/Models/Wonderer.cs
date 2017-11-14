@@ -22,6 +22,7 @@ namespace TB_QuestGame
         private int _lives;
         private int _sanity;
         private List<int> _homeLocationsVisited;
+        private List<WondererObject> _inventory;
 
         #endregion
         
@@ -50,6 +51,12 @@ namespace TB_QuestGame
             get { return _sanity; }
             set { _sanity = value; }
         }
+
+        public List<WondererObject> Inventory
+        {
+            get { return _inventory; }
+            set { _inventory = value; }
+        }
         #endregion
 
         #region CONSTRUCTORS
@@ -57,11 +64,13 @@ namespace TB_QuestGame
         public Wonderer()
         {
             _homeLocationsVisited = new List<int>();
+            _inventory = new List<WondererObject>();
         }
 
         public Wonderer(string name, /*RaceType race,*/ HeightType height /*SanityType sanity*/) : base(name, /*race,*/ height /*sanity*/)
         {
             _homeLocationsVisited = new List<int>();
+            _inventory = new List<WondererObject>();
         }
 
         #endregion
