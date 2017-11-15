@@ -171,6 +171,10 @@ namespace TB_QuestGame
                         LookAtAction();
                         break;
 
+                    case WondererAction.PickUp:
+                        PickUpAction();
+                        break;
+
                     case WondererAction.Exit:
                         _playingGame = false;
                         break;
@@ -195,6 +199,21 @@ namespace TB_QuestGame
                 GameObject gameObject = _gameHome.GetGameObjectById(gameObjectToLookAtID);
 
                 _gameConsoleView.DisplayGameObjectInfo(gameObject);
+            }
+        }
+
+        private void PickUpAction()
+        {
+            int wondererObjectToPickUpId = _gameConsoleView.DisplayGetWondererObjectToPickUp();
+
+            if (wondererObjectToPickUpId != 0)
+            {
+                WondererObject wondererObject = _gameHome.GetGameObjectById(wondererObjectToPickUpId) as WondererObject;
+
+                _gameWonderer.Inventory.Add(wondererObject);
+                wondererObject.HomeLocationId = 0;
+
+                _gameConsoleView.DisplayConfirmTravelerObjectAddedToInventory(wondererObject);
             }
         }
 

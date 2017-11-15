@@ -94,6 +94,28 @@ namespace TB_QuestGame
             }
         }
 
+        public bool IsValidWondererObjectByLocationID(int wondererObjectID, int currentHomeLocation)
+        {
+            List<int> wondererObjectIds = new List<int>();
+
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.HomeLocationId == currentHomeLocation && gameObject is WondererObject)
+                {
+                    wondererObjectIds.Add(gameObject.Id);
+                }
+            }
+
+            if (wondererObjectIds.Contains(wondererObjectID))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public GameObject GetGameObjectById(int Id)
         {
             GameObject gameObjectToReturn = null;
@@ -128,6 +150,21 @@ namespace TB_QuestGame
             }
 
             return gameObjects;
+        }
+
+        public List<WondererObject> GetWondererObjectsByHomeLocationId(int homeLocationId)
+        {
+            List<WondererObject> wondererObjects = new List<WondererObject>();
+
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.HomeLocationId == homeLocationId && gameObject is WondererObject)
+                {
+                    wondererObjects.Add(gameObject as WondererObject);
+                }
+            }
+
+            return wondererObjects;
         }
 
         public bool IsAccessibleLocation(int homeLocationID)

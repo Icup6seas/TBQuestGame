@@ -15,11 +15,11 @@ namespace TB_QuestGame
             {
                 Id = 1,
                 Name = "Wood Support Beam",
-                HomeLocationId = 0,
+                HomeLocationId = 1,
                 Description = "Almost tripping over it when breaking in, there is a wood beam I can use to barricade the door.",
                 Type = WondererObjectType.Stuff,
                 Value = 0,
-                CanInventory = false,
+                CanInventory = true,
                 IsConsumable = true,
                 IsVisible = true
             },

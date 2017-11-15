@@ -608,6 +608,54 @@ namespace TB_QuestGame
             return gameObjectId;
         }
 
+        public int DisplayGetWondererObjectToPickUp()
+        {
+            int gameObjectId = 0;
+            bool validGameObjectId = false;
+
+            List<WondererObject> wondererObjectInHomeLocation = _gameHome.GetWondererObjectsByHomeLocationId(_gameWonderer.HomeLocationID);
+
+            if (wondererObjectInHomeLocation.Count > 0)
+            {
+                DisplayGamePlayScreen("Pick Up Game Object", Text.GameObjectsChooseList(wondererObjectInHomeLocation), ActionMenu.MainMenu, "");
+
+                while (!validGameObjectId)
+                {
+                    GetInteger($"Enter the ID numner of the object you wish to add to your inventory: ", 0, 0, out gameObjectId);
+
+                    if (_gameHome.IsValidWondererObjectByLocationID(gameObjectId, _gameWonderer.HomeLocationID))
+                    {
+                        WondererObject wondererObject = _gameHome.GetGameObjectById(gameObjectId) as WondererObject;
+                        if (wondererObject.CanInventory)
+                        {
+                            validGameObjectId = true;
+                        }
+                        else
+                        {
+                            ClearInputBox();
+                            DisplayInputErrorMessage("It appears you may not inventory that item. Try again.");
+                        }
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("Invalid object ID. Try again.");
+                    }
+                }
+            }
+            else
+            {
+                DisplayGamePlayScreen("Pick up Game Object", "It appears there are no game items here.", ActionMenu.MainMenu, "");
+            }
+
+            return gameObjectId;
+        }
+
+        public void DisplayConfirmTravelerObjectAddedToInventory(WondererObject objectAddedToInventory)
+        {
+            DisplayGamePlayScreen("Pick Up Game Object", $"The {objectAddedToInventory.Name} has been added to your inventory.", ActionMenu.MainMenu, "");
+        }
+
         public void DisplayLocationsVisited()
         {
             List<HomeUnivLocation> visitedHomeLocations = new List<HomeUnivLocation>();
