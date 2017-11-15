@@ -175,6 +175,10 @@ namespace TB_QuestGame
                         PickUpAction();
                         break;
 
+                    case WondererAction.PutDown:
+                        PutDownAction();
+                        break;
+
                     case WondererAction.Exit:
                         _playingGame = false;
                         break;
@@ -215,6 +219,18 @@ namespace TB_QuestGame
 
                 _gameConsoleView.DisplayConfirmTravelerObjectAddedToInventory(wondererObject);
             }
+        }
+
+        private void PutDownAction()
+        {
+            int inventoryObjectToPutDownId = _gameConsoleView.DisplayGetInventoryObjectToPutDown();
+
+            WondererObject wondererObject = _gameHome.GetGameObjectById(inventoryObjectToPutDownId) as WondererObject;
+
+            _gameWonderer.Inventory.Remove(wondererObject);
+            wondererObject.HomeLocationId = _gameWonderer.HomeLocationID;
+
+            _gameConsoleView.DisplayConfirmTravelerObjectAddedToInventory(wondererObject);
         }
 
         /// <summary>

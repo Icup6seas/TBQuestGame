@@ -651,6 +651,45 @@ namespace TB_QuestGame
             return gameObjectId;
         }
 
+        public int DisplayGetInventoryObjectToPutDown()
+        {
+            int wondererObjectId = 0;
+            bool validInventoryObjectId = false;
+
+            if (_gameWonderer.Inventory.Count > 0)
+            {
+                DisplayGamePlayScreen("Put Down Game Object", Text.GameObjectsChooseList(_gameWonderer.Inventory), ActionMenu.MainMenu, "");
+
+                while (!validInventoryObjectId)
+                {
+                    GetInteger($"Enter the ID of the item you wish to drop from your inventory: ", 0, 0, out wondererObjectId);
+
+                    WondererObject objectToPutDown = _gameWonderer.Inventory.FirstOrDefault(o => o.Id == wondererObjectId);
+
+                    if (objectToPutDown != null)
+                    {
+                        validInventoryObjectId = true;
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("You may not inventory that item. Try again.");
+                    }
+                }
+            }
+            else
+            {
+                DisplayGamePlayScreen("Put Down Game Object", "It appears there are no game items in your inventory.", ActionMenu.MainMenu, "");
+            }
+
+            return wondererObjectId;
+        }
+
+        public void DisplayConfirmTravelerObjectRemovedFromInventory(WondererObject objectRemovedFromInventory)
+        {
+            DisplayGamePlayScreen("Put Down Game Object", $"The {objectRemovedFromInventory.Name} has been removed from your inventory.", ActionMenu.MainMenu, "");
+        }
+
         public void DisplayConfirmTravelerObjectAddedToInventory(WondererObject objectAddedToInventory)
         {
             DisplayGamePlayScreen("Pick Up Game Object", $"The {objectAddedToInventory.Name} has been added to your inventory.", ActionMenu.MainMenu, "");
