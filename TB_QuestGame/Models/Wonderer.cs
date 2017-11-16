@@ -67,7 +67,7 @@ namespace TB_QuestGame
             _inventory = new List<WondererObject>();
         }
 
-        public Wonderer(string name, /*RaceType race,*/ HeightType height /*SanityType sanity*/) : base(name, /*race,*/ height /*sanity*/)
+        public Wonderer(string name, HeightType height) : base(name, height)
         {
             _homeLocationsVisited = new List<int>();
             _inventory = new List<WondererObject>();

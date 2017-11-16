@@ -171,18 +171,6 @@ namespace TB_QuestGame
         }
 
         /// <summary>
-        /// get a character race value from the user
-        /// </summary>
-        /// <returns>character race value</returns>
-        //public Character.RaceType GetRace()
-        //{
-        //    Character.RaceType raceType;
-        //    Enum.TryParse<Character.RaceType>(Console.ReadLine(), out raceType);
-
-        //    return raceType;
-        //}
-
-        /// <summary>
         /// get a character height value from the user
         /// </summary>
         /// <returns></returns>
@@ -194,18 +182,6 @@ namespace TB_QuestGame
             return heightType;
         }
 
-        //public Character.SanityType GetSanity()
-        //{
-        //    Character.SanityType sanityType;
-        //    Enum.TryParse<Character.SanityType>(Console.ReadLine(), out sanityType);
-
-        //    return sanityType;
-        //}
-
-        /// <summary>
-        /// display splash screen
-        /// </summary>
-        /// <returns>player chooses to play</returns>
         public bool DisplaySpashScreen()
         {
             bool playing = true;
@@ -495,20 +471,6 @@ namespace TB_QuestGame
             DisplayGamePlayScreen("They can't take away who I am, but they might be able to change what I will become.", Text.InitializeMissionGetWondererHeight(Wonderer), ActionMenu.MissionIntro, "");
             DisplayInputBoxPrompt($"Enter your height {Wonderer.Name}: ");
             Wonderer.Height = GetHeight();
-
-            //
-            // get sanity
-            //
-            //DisplayGamePlayScreen("A mind is a terrible thing to waste.", Text.InitializeMissionGetWondererSanity(Wonderer), ActionMenu.MissionIntro, "");
-            //DisplayInputBoxPrompt($"{Wonderer.Name}, I can only describe myself as feeling... ");
-            //Wonderer.Sanity = GetSanity();
-
-            //
-            // get Wonderer's race
-            //
-            //DisplayGamePlayScreen("They can't take away who I am, but they might be able to change what I will become.", Text.InitializeMissionGetWondererRace(Wonderer), ActionMenu.MissionIntro, "");
-            //DisplayInputBoxPrompt($"Enter your race {Wonderer.Name}: ");
-            //Wonderer.Race = GetRace();
 
             //
             // echo the Wonderer's info

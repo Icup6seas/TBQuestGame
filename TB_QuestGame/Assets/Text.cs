@@ -89,29 +89,6 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
-        //public static string InitializeMissionGetWondererRace(Wonderer gameWonderer)
-        //{
-        //    string messageBoxText =
-        //        $"{gameWonderer.Name}...I can't stop saying that, it makes me happy. Now how would I \n" +
-        //        "What am I? \n" +
-        //        " \n" +
-        //        "...Enter your race...\n";
-
-        //    string raceList = null;
-
-        //    foreach (Character.RaceType race in Enum.GetValues(typeof(Character.RaceType)))
-        //    {
-        //        if (race != Character.RaceType.None)
-        //        {
-        //            raceList += $"\t{race}\n";
-        //        }
-        //    }
-
-        //    messageBoxText += raceList;
-
-        //    return messageBoxText;
-        //}
-
         public static string InitializeMissionGetWondererHeight(Wonderer gameWonderer)
         {
             string messageBoxText =
@@ -134,29 +111,6 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
-        //public static string InitializeMissionGetWondererSanity(Wonderer gameWonderer)
-        //{
-        //    string messageBoxText =
-        //        $"{gameWonderer.Name}...Take some deep breaths, I need to focus. \n" +
-        //        "What's my mindset? \n" +
-        //        " \n" +
-        //        "...Enter your sanity...\n";
-
-        //    string sanityList = null;
-
-        //    foreach (Character.SanityType sanity in Enum.GetValues(typeof(Character.SanityType)))
-        //    {
-        //        if (sanity != Character.SanityType.None)
-        //        {
-        //            sanityList += $"\t{sanity}\n";
-        //        }
-        //    }
-
-        //    messageBoxText += sanityList;
-
-        //    return messageBoxText;
-        //}
-
         public static string InitializeMissionEchoWondererInfo(Wonderer gameWonderer)
         {
             string messageBoxText =
@@ -164,8 +118,6 @@ namespace TB_QuestGame
                 " \n" +
                 $"\tMy name is {gameWonderer.Name}\n" +
                 $"\tTime goes by so fast but I think I'm {gameWonderer.Age}\n" +
-                //$"\tMost importantly, I am still a {gameWonderer.Race}\n" +
-                //$"\tand that I am {gameWonderer.Sanity}\n" +
                 $"\tI am fairly {gameWonderer.Height}\n" +
                 " \n" +
                 "...Press any key to continue my struggle...";
@@ -182,9 +134,7 @@ namespace TB_QuestGame
             string messageBoxText =
                 $"\tWonderer Name... {gameWonderer.Name}\n" +
                 $"\tWonderer Age... {gameWonderer.Age}\n" +
-                //$"\tWonderer Race... {gameWonderer.Race}\n" +
                 $"\tWonderer Height... {gameWonderer.Height}\n" +
-                //$"\tWonderer Sanity... {gameWonderer.Sanity}\n" +
                 $"\tCurrent Location... {currentHomeLocation.CommonName}\n" +
                 " \n";
 
@@ -214,21 +164,8 @@ namespace TB_QuestGame
                 "Enter the ID number of the place you want to visit next, you don't have much time. \n" +
                 " \n" +
 
-                "ID".PadRight(10) + "Name".PadRight(30) + /*"Accessible".PadRight(10) + */"\n" +
-                "---".PadRight(10) + "----------------------".PadRight(30) + /*"-------".PadRight(10) +*/ "\n";
-
-            //string homeLocationList = null;
-            //foreach (HomeUnivLocation homeLocation in homeLocations)
-            //{
-            //    if (homeLocation.HomeLocationID != gameWonderer.HomeLocationID)
-            //    {
-            //        homeLocationList +=
-            //            $"{homeLocation.HomeLocationID}".PadRight(10) +
-            //            $"{homeLocation.CommonName}".PadRight(30) +
-            //            $"{homeLocation.Accessable}".PadRight(10) +
-            //            Environment.NewLine;
-            //    }
-            //}
+                "ID".PadRight(10) + "Name".PadRight(30) + "\n" +
+                "---".PadRight(10) + "----------------------".PadRight(30) + "\n";
 
             string homeLocationList = null;
             foreach (HomeUnivLocation homeLocation in homeLocations)
@@ -426,7 +363,7 @@ namespace TB_QuestGame
         {
             List<string> statusBoxText = new List<string>();
 
-            statusBoxText.Add($"Mindset: {wonderer.Sanity}\n");
+            statusBoxText.Add($"Sanity: {wonderer.Sanity}\n");
             statusBoxText.Add($"Health: {wonderer.Health}\n");
             statusBoxText.Add($"Lives: {wonderer.Lives}\n");
 

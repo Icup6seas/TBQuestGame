@@ -242,7 +242,6 @@ namespace TB_QuestGame
 
             _gameWonderer.Name = Wonderer.Name;
             _gameWonderer.Age = Wonderer.Age;
-            //_gameWonderer.Race = Wonderer.Race;
             _gameWonderer.Height = Wonderer.Height;
             _gameWonderer.Sanity = 100;
             _gameWonderer.Health = 100;
@@ -259,7 +258,6 @@ namespace TB_QuestGame
 
             if (_gameWonderer.HomeLocationID >= 2)
             {
-                //_gameWonderer.Health -= 5;
                 _gameWonderer.Sanity -= 2;
 
                 if (_gameWonderer.Health <= 0 || _gameWonderer.Sanity <= 0)
@@ -273,18 +271,6 @@ namespace TB_QuestGame
                         _gameWonderer.Sanity += 100;
                     }
                 }
-
-                //if (_gameWonderer.Sanity <= 0)
-                //{
-                //    _gameWonderer.Lives -= 1;
-                //    Console.WriteLine("You have mind couldn't handle the pressure, you have died!");
-
-                //    if (_gameWonderer.Sanity <= 0)
-                //    {
-                //        _gameWonderer.Sanity += 100;
-                //    }
-                //}
-
             }
         }
 

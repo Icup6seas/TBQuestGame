@@ -45,7 +45,6 @@ namespace TB_QuestGame
         private void InitializeHome()
         {
             _homeLocations = HomeObjectLocations.HomeLocations;
-            //_homeLocations = HomeObjectLocations.HomeLocations as List<HomeUnivLocation>;
             _gameObjects = HomeObjects.GameObject;
         }
 

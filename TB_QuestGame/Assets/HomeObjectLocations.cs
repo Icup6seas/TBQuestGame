@@ -26,7 +26,6 @@ namespace TB_QuestGame.Assets
                 "a severly splintered entertainment center to your left, against the wall. Also, what you think " +
                 "looks like a couch left over towards the wall ahead of you. \n",
                 Accessable = true,
-                //SanityPoints = -10
 
             },
 
@@ -40,7 +39,6 @@ namespace TB_QuestGame.Assets
                     "In the mound of ashes you see a handle of a metal fire poker. No wood left to light " +
                     "these dark times. \n",
                 Accessable = true,
-                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -51,7 +49,6 @@ namespace TB_QuestGame.Assets
                 Description = "No running water, hasn't been running for a long while now. Lots of draws around, I should take a look.",
                 GeneralContents = "Fixtures, cabinets, broken table",
                 Accessable = true,
-                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -62,7 +59,6 @@ namespace TB_QuestGame.Assets
                 Description = "The door seems to be battered and broke, there might be something good in here, you use the sink pipe to pry the door open.",
                 GeneralContents = "Useless furnature but lots of drawers, I should take a look, ther migh be something of use...there is a bed",
                 Accessable = false,
-                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -73,7 +69,6 @@ namespace TB_QuestGame.Assets
                 Description = "Where children used to sleep, they are long gone by now.",
                 GeneralContents = "The breaking bed shook the door open. There are family photos on the ground, claw marks on the walls covered in what looks like old blood... wood, rope",
                 Accessable = false,
-                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -84,7 +79,6 @@ namespace TB_QuestGame.Assets
                 Description = "Looks like is has been used...a lot. Not much to use here but it is still worth the look. The opened when the bed was broken.",
                 GeneralContents = "old towel",
                 Accessable = false,
-                //SanityPoints = -10
             },
 
             new HomeUnivLocation
@@ -95,7 +89,6 @@ namespace TB_QuestGame.Assets
                 Description = "The was blown open with a rush of beasts in desperate search for human flesh and shelter...the sun is coming up.",
                 GeneralContents = "Nothing here but a door and some old shoes.",
                 Accessable = false,
-                //SanityPoints = -10
             }
         };
     }
