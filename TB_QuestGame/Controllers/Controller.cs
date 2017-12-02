@@ -53,12 +53,111 @@ namespace TB_QuestGame
             _gameWonderer = new Wonderer();
             _gameHome = new Home();
             _gameConsoleView = new ConsoleView(_gameWonderer, _gameHome);
+            WondererObject wondererObject;
             _playingGame = true;
 
             _gameWonderer.Inventory.Add(_gameHome.GetGameObjectById(11) as WondererObject);
             _gameWonderer.Inventory.Add(_gameHome.GetGameObjectById(12) as WondererObject);
 
+            foreach (GameObject gameObject in _gameHome.GameObjects)
+            {
+                if (gameObject is WondererObject)
+                {
+                    // casting
+                    wondererObject = gameObject as WondererObject;
+                    wondererObject.ObjectAddedToInventory += HandleObjectAddedToInventory;
+                    wondererObject.ObjectDeletedFromInventory += HandleObjectDeletedFromInventory;
+                }
+            }
+
             Console.CursorVisible = false;
+        }
+
+        private void HandleObjectAddedToInventory(object gameObject, EventArgs e)
+        {
+            if (gameObject.GetType() == typeof(WondererObject))
+            {
+                WondererObject wondererObject = gameObject as WondererObject;
+                switch (wondererObject.Type)
+                {
+                    case WondererObjectType.Food:
+                        _gameWonderer.Health += wondererObject.Value;
+
+                        if (_gameWonderer.Health >= 100)
+                        {
+                            _gameWonderer.Health = 100;
+                            _gameWonderer.Lives += 1;
+                        }
+                        if (wondererObject.IsConsumable)
+                        {
+                            wondererObject.HomeLocationId = -1;
+                        }
+                        break;
+
+                    case WondererObjectType.Medicine:
+                        _gameWonderer.Sanity += wondererObject.Value;
+
+                        if (_gameWonderer.Sanity >= 100)
+                        {
+                            _gameWonderer.Sanity = 100;
+                        }
+                        if (wondererObject.IsConsumable)
+                        {
+                            wondererObject.HomeLocationId = -1;
+                        }
+                        
+                        break;
+                    case WondererObjectType.Weapon:
+                        break;
+                    case WondererObjectType.Stuff:
+                        break;
+                    case WondererObjectType.Key:
+                        if (wondererObject.Id == 6)
+                        {
+                            _gameHome.GetHomeLocationByID(3).Accessable = true;
+                        }
+                        if (wondererObject.Id == 7)
+                        {
+                            _gameHome.GetHomeLocationByID(4).Accessable = true;
+                        }
+                        if (wondererObject.IsConsumable)
+                        {
+                            wondererObject.HomeLocationId = -1;
+                        }
+                        break;
+                    case WondererObjectType.Information:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void HandleObjectDeletedFromInventory(object gameObject, EventArgs e)
+        {
+            if (gameObject.GetType() == typeof(WondererObject))
+            {
+                WondererObject wondererObject = gameObject as WondererObject;
+                switch (wondererObject.Type)
+                {
+                    case WondererObjectType.Key:
+                        if (wondererObject.Id == 6)
+                        {
+                            _gameHome.GetHomeLocationByID(3).Accessable = false;
+                        }
+                        if (wondererObject.Id == 7)
+                        {
+                            _gameHome.GetHomeLocationByID(4).Accessable = false;
+                        }
+                        if (wondererObject.IsConsumable)
+                        {
+                            wondererObject.HomeLocationId = -1;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         /// <summary>

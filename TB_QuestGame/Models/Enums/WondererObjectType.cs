@@ -12,6 +12,7 @@ namespace TB_QuestGame
         Medicine,
         Weapon,
         Stuff,
+        Key,
         Information
     }
 }
