@@ -14,6 +14,7 @@ namespace TB_QuestGame
         //List of all Home Locations
         private List<HomeUnivLocation> _homeLocations;
         private List<GameObject> _gameObjects;
+        private List<Npc> _npcs;
 
         public List<HomeUnivLocation> HomeLocations
         {
@@ -25,6 +26,12 @@ namespace TB_QuestGame
         {
             get { return _gameObjects; }
             set { _gameObjects = value; }
+        }
+
+        public List<Npc> Npcs
+        {
+            get { return _npcs; }
+            set { _npcs = value; }
         }
 
         #endregion
@@ -46,6 +53,7 @@ namespace TB_QuestGame
         {
             _homeLocations = HomeObjectLocations.HomeLocations;
             _gameObjects = HomeObjects.GameObject;
+            _npcs = HomeObjects.Npcs;
         }
 
         #endregion
@@ -106,6 +114,28 @@ namespace TB_QuestGame
             }
 
             if (wondererObjectIds.Contains(wondererObjectID))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsValidNpcByLocationId(int npcId, int currentHomeLocation)
+        {
+            List<int> npcIds = new List<int>();
+
+            foreach (Npc npc in _npcs)
+            {
+                if (npc.HomeLocationID == currentHomeLocation)
+                {
+                    npcIds.Add(npc.Id);
+                }
+            }
+
+            if (npcIds.Contains(npcId))
             {
                 return true;
             }
@@ -179,6 +209,27 @@ namespace TB_QuestGame
             }
         }
 
+        public Npc GetNpcById(int Id)
+        {
+            Npc npcToReturn = null;
+
+            foreach (Npc npc in _npcs)
+            {
+                if (npc.Id == Id)
+                {
+                    npcToReturn = npc;
+                }
+            }
+
+            if (npcToReturn == null)
+            {
+                string feedbackMessage = $"The NPC ID {Id} does not exist in the current Home Location.";
+                throw new ArgumentException(Id.ToString(), feedbackMessage);
+            }
+
+            return npcToReturn;
+        }
+
         public int GetMaxHomeLocationID()
         {
             int MaxID = 0;
@@ -213,6 +264,21 @@ namespace TB_QuestGame
             }
 
             return homeLocation;
+        }
+
+        public List<Npc> GetNpcsByHomeLocationId(int homeLocationId)
+        {
+            List<Npc> npcs = new List<Npc>();
+
+            foreach (Npc npc in _npcs)
+            {
+                if (npc.HomeLocationID == homeLocationId)
+                {
+                    npcs.Add(npc);
+                }
+            }
+
+            return npcs;
         }
 
         #endregion

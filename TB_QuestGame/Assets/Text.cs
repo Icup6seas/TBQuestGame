@@ -209,6 +209,35 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
+        public static string ListAllNpcObjects(IEnumerable<Npc> npcObjects)
+        {
+
+            string messageBoxText =
+                "NPC Objects\n" +
+                " \n" +
+
+                "ID".PadRight(10) +
+                "Name".PadRight(30) +
+                "Home Location Id".PadRight(10) + "\n" +
+                "---".PadRight(10) +
+                "----------------------".PadRight(30) +
+                "----------------------".PadRight(10) + "\n";
+
+            string npcObjectRows = null;
+            foreach (Npc npcObject in npcObjects)
+            {
+                npcObjectRows +=
+                    $"{npcObject.Id}".PadRight(10) +
+                    $"{npcObject.Name}".PadRight(30) +
+                    $"{npcObject.HomeLocationID}".PadRight(10) +
+                    Environment.NewLine;
+            }
+
+            messageBoxText += npcObjectRows;
+
+            return messageBoxText;
+        }
+
         public static string GameObjectsChooseList(IEnumerable<GameObject> gameObjects)
         {
             string messageBoxText =

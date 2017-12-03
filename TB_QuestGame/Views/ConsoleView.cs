@@ -683,6 +683,11 @@ namespace TB_QuestGame
             DisplayGamePlayScreen("List: Game Objects", Text.ListAllGameObjects(_gameHome.GameObjects), ActionMenu.AdminMenu, "");
         }
 
+        public void DisplayListOfAllNpcObjects()
+        {
+            DisplayGamePlayScreen("List: Npc Objects", Text.ListAllNpcObjects(_gameHome.Npcs), ActionMenu.AdminMenu, "");
+        }
+
         #region ----- display responses to menu action choices -----
 
         public void DisplayWondererInfo()

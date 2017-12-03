@@ -69,6 +69,7 @@ namespace TB_QuestGame
             {
                 {'1', WondererAction.ListHomeLocations },
                 {'2', WondererAction.ListGameObjects },
+                {'3', WondererAction.ListNonPlayerCharacters }, 
                 {'0', WondererAction.ReturnToMainMenu }
             }
         };

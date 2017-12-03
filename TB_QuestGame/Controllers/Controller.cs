@@ -239,6 +239,10 @@ namespace TB_QuestGame
                         _gameConsoleView.DisplayListOfAllGameObjects();
                         break;
 
+                    case WondererAction.ListNonPlayerCharacters:
+                        _gameConsoleView.DisplayListOfAllNpcObjects();
+                        break;
+
                     case WondererAction.AdminMenu:
                         ActionMenu.currentMenu = ActionMenu.CurrentMenu.AdminMenu;
                         _gameConsoleView.DisplayGamePlayScreen("Admin Menu", "Select an operation from the menu.", ActionMenu.AdminMenu, "");

@@ -23,6 +23,7 @@ namespace TB_QuestGame
         WondererInfo,
         ListHomeLocations,
         ListGameObjects,
+        ListNonPlayerCharacters,
         AdminMenu,
         ReturnToMainMenu,
         Exit
