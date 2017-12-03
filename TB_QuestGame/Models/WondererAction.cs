@@ -14,17 +14,26 @@ namespace TB_QuestGame
         None,
         MissionSetup,
         LookAround,
+        Travel,
+
+        WondererMenu,
+        WondererInfo,
+        Inventory,
+        WondererLocationsVisited,
+
+        ObjectMenu,
         LookAt,
         PickUp,
         PutDown,
-        Inventory,
-        Travel,
-        WondererLocationsVisited,
-        WondererInfo,
+
+        NonPlayerCharacterMenu,
+        TalkTo,
+
+        AdminMenu,
         ListHomeLocations,
         ListGameObjects,
         ListNonPlayerCharacters,
-        AdminMenu,
+        
         ReturnToMainMenu,
         Exit
     }

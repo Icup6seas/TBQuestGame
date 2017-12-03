@@ -28,7 +28,7 @@ namespace TB_QuestGame
             {
                 Id = 2,
                 Name = "Fireplace",
-                HomeLocationId = 1,
+                HomeLocationId = -1,
                 Description = "Full of ash but no wood for a fire, there is something that catches your eye though...",
                 Type = WondererObjectType.Stuff,
                 Value = 0,

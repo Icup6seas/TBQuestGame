@@ -243,6 +243,21 @@ namespace TB_QuestGame
                         _gameConsoleView.DisplayListOfAllNpcObjects();
                         break;
 
+                    case WondererAction.WondererMenu:
+                        ActionMenu.currentMenu = ActionMenu.CurrentMenu.WondererMenu;
+                        _gameConsoleView.DisplayGamePlayScreen("Wonderer Menu", "Select an operation from the menu.", ActionMenu.WondererMenu, "");
+                        break;
+
+                    case WondererAction.ObjectMenu:
+                        ActionMenu.currentMenu = ActionMenu.CurrentMenu.ObjectMenu;
+                        _gameConsoleView.DisplayGamePlayScreen("Object Menu", "Select an operation from the menu.", ActionMenu.ObjectMenu, "");
+                        break;
+
+                    case WondererAction.NonPlayerCharacterMenu:
+                        ActionMenu.currentMenu = ActionMenu.CurrentMenu.NpcMenu;
+                        _gameConsoleView.DisplayGamePlayScreen("NPC Menu", "Select an operation from the menu.", ActionMenu.NpcMenu, "");
+                        break;
+
                     case WondererAction.AdminMenu:
                         ActionMenu.currentMenu = ActionMenu.CurrentMenu.AdminMenu;
                         _gameConsoleView.DisplayGamePlayScreen("Admin Menu", "Select an operation from the menu.", ActionMenu.AdminMenu, "");

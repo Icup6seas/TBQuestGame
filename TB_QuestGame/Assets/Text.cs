@@ -388,6 +388,31 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
+        public static string NpcsChooseList(IEnumerable<Npc> npcs)
+        {
+           
+            string messageBoxText =
+                "NPCs\n" +
+                " \n" +                
+                "ID".PadRight(10) +
+                "Name".PadRight(30) + "\n" +
+                "---".PadRight(10) +
+                "----------------------".PadRight(30) + "\n";
+            
+            string npcRows = null;
+            foreach (Npc npc in npcs)
+            {
+                npcRows +=
+                    $"{npc.Id}".PadRight(10) +
+                    $"{npc.Name}".PadRight(30) +
+                    Environment.NewLine;
+            }
+
+            messageBoxText += npcRows;
+
+            return messageBoxText;
+        }
+
         public static List<string> StatusBox(Wonderer wonderer)
         {
             List<string> statusBoxText = new List<string>();

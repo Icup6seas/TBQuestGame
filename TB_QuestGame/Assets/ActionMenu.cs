@@ -17,6 +17,9 @@ namespace TB_QuestGame
             MissionIntro,
             InitializeMission,
             MainMenu,
+            ObjectMenu,
+            NpcMenu,
+            WondererMenu,
             AdminMenu
         }
 
@@ -48,16 +51,50 @@ namespace TB_QuestGame
             MenuTitle = "Main Menu",
             MenuChoices = new Dictionary<char, WondererAction>()
                 {
-                    { '1', WondererAction.WondererInfo },
-                    { '2', WondererAction.LookAround },
-                    { '3', WondererAction.LookAt },
-                    { '4', WondererAction.PickUp },
-                    { '5', WondererAction.PutDown },
-                    { '6', WondererAction.Inventory },
-                    { '7', WondererAction.Travel },
-                    { '8', WondererAction.WondererLocationsVisited },
-                    { '9', WondererAction.AdminMenu },
+                    { '1', WondererAction.LookAround },
+                    { '2', WondererAction.Travel },
+                    { '3', WondererAction.ObjectMenu },
+                    { '4', WondererAction.NonPlayerCharacterMenu },
+                    { '5', WondererAction.WondererMenu },
+                    { '6', WondererAction.AdminMenu },
                     { '0', WondererAction.Exit }
+                }
+        };
+
+        public static Menu WondererMenu = new Menu()
+        {
+            MenuName = "WondererMenu",
+            MenuTitle = "Wonderer Menu",
+            MenuChoices = new Dictionary<char, WondererAction>()
+                {
+                    { '1', WondererAction.WondererInfo },
+                    { '2', WondererAction.Inventory},
+                    { '3', WondererAction.WondererLocationsVisited},
+                    { '0', WondererAction.ReturnToMainMenu }
+                }
+        };
+
+        public static Menu ObjectMenu = new Menu()
+        {
+            MenuName = "ObjectMenu",
+            MenuTitle = "Object Menu",
+            MenuChoices = new Dictionary<char, WondererAction>()
+                {
+                    { '1', WondererAction.LookAt },
+                    { '2', WondererAction.PickUp},
+                    { '3', WondererAction.PutDown},
+                    { '0', WondererAction.ReturnToMainMenu }
+                }
+        };
+
+        public static Menu NpcMenu = new Menu()
+        {
+            MenuName = "NpcMenu",
+            MenuTitle = "NPC Menu",
+            MenuChoices = new Dictionary<char, WondererAction>()
+                {
+                    { '1', WondererAction.TalkTo},
+                    { '0', WondererAction.ReturnToMainMenu }
                 }
         };
 
@@ -69,7 +106,7 @@ namespace TB_QuestGame
             {
                 {'1', WondererAction.ListHomeLocations },
                 {'2', WondererAction.ListGameObjects },
-                {'3', WondererAction.ListNonPlayerCharacters }, 
+                {'3', WondererAction.ListNonPlayerCharacters },
                 {'0', WondererAction.ReturnToMainMenu }
             }
         };

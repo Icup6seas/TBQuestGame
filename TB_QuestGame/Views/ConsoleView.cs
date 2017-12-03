@@ -489,8 +489,11 @@ namespace TB_QuestGame
 
             List<GameObject> gameObjectsInCurrentHomeLocation = _gameHome.GetGameObjectsByHomeLocationId(_gameWonderer.HomeLocationID);
 
+            List<Npc> npcsInCurrentHomeLocation = _gameHome.GetNpcsByHomeLocationId(_gameWonderer.HomeLocationID); 
+
             string messageBoxText = Text.LookAround(currentHomeLocation) + Environment.NewLine + Environment.NewLine;
             messageBoxText += Text.GameObjectsChooseList(gameObjectsInCurrentHomeLocation);
+            messageBoxText += Text.NpcsChooseList(npcsInCurrentHomeLocation);
 
             DisplayGamePlayScreen("I am currently in the ", messageBoxText, ActionMenu.MainMenu, "");
         }
