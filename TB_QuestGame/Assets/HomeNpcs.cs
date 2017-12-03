@@ -38,7 +38,7 @@ namespace TB_QuestGame
             {
                 Id = 3,
                 Name = "Inner Voice 3",
-                HomeLocationID = 2,
+                HomeLocationID = 3,
                 Description = "Listening to yourself might be your key to survival.",
                 Messages = new List<string>
                 {

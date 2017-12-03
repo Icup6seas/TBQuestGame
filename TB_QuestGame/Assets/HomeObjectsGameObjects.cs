@@ -85,7 +85,7 @@ namespace TB_QuestGame
                 Type = WondererObjectType.Key,
                 Value = 0,
                 CanInventory = true,
-                IsConsumable = true,
+                IsConsumable = false,
                 IsVisible = true
             },
 

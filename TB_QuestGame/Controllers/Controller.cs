@@ -149,10 +149,10 @@ namespace TB_QuestGame
                         {
                             _gameHome.GetHomeLocationByID(4).Accessable = false;
                         }
-                        if (wondererObject.IsConsumable)
-                        {
-                            wondererObject.HomeLocationId = -1;
-                        }
+                        //if (wondererObject.IsConsumable)
+                        //{
+                        //    wondererObject.HomeLocationId = -1;
+                        //}
                         break;
                     default:
                         break;
@@ -205,14 +205,7 @@ namespace TB_QuestGame
 
                 UpdateGameStatus();
 
-                if (ActionMenu.currentMenu == ActionMenu.CurrentMenu.MainMenu)
-                {
-                    WondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.MainMenu);
-                }
-                else if (ActionMenu.currentMenu == ActionMenu.CurrentMenu.AdminMenu)
-                {
-                    WondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.AdminMenu);
-                }
+                WondererActionChoice = GetNextWondererAction();
                 
 
                 //
@@ -229,6 +222,10 @@ namespace TB_QuestGame
 
                     case WondererAction.Inventory:
                         _gameConsoleView.DisplayInventory();
+                        break;
+
+                    case WondererAction.TalkTo:
+                        TalkToAction();
                         break;
 
                     case WondererAction.ListHomeLocations:
@@ -312,6 +309,39 @@ namespace TB_QuestGame
             Environment.Exit(1);
         }
 
+        private WondererAction GetNextWondererAction()
+        {
+            WondererAction wondererActionChoice = WondererAction.None;
+
+            switch (ActionMenu.currentMenu)
+            {
+                case ActionMenu.CurrentMenu.MainMenu:
+                    wondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.MainMenu);
+                    break;
+
+                case ActionMenu.CurrentMenu.ObjectMenu:
+                    wondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.ObjectMenu);
+                    break;
+
+                case ActionMenu.CurrentMenu.NpcMenu:
+                    wondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.NpcMenu);
+                    break;
+
+                case ActionMenu.CurrentMenu.WondererMenu:
+                    wondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.WondererMenu);
+                    break;
+
+                case ActionMenu.CurrentMenu.AdminMenu:
+                    wondererActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.AdminMenu);
+                    break;
+
+                default:
+                    break;
+            }
+
+            return wondererActionChoice;
+        }
+
         private void LookAtAction()
         {
             int gameObjectToLookAtID = _gameConsoleView.DisplayGetGameObjectToLookAt();
@@ -349,6 +379,18 @@ namespace TB_QuestGame
             wondererObject.HomeLocationId = _gameWonderer.HomeLocationID;
 
             _gameConsoleView.DisplayConfirmTravelerObjectAddedToInventory(wondererObject);
+        }
+
+        private void TalkToAction()
+        {
+            int npcToTalkToId = _gameConsoleView.DisplayGetNpcToTalkTo();
+
+            if (npcToTalkToId != 0)
+            {
+                Npc npc = _gameHome.GetNpcById(npcToTalkToId);
+
+                _gameConsoleView.DisplayTalkTo(npc);
+            }
         }
 
         /// <summary>

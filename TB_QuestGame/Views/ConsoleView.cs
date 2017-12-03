@@ -691,6 +691,64 @@ namespace TB_QuestGame
             DisplayGamePlayScreen("List: Npc Objects", Text.ListAllNpcObjects(_gameHome.Npcs), ActionMenu.AdminMenu, "");
         }
 
+        public int DisplayGetNpcToTalkTo()
+        {
+            int npcId = 0;
+            bool validNpcId = false;
+
+            List<Npc> npcsInHomeLocation = _gameHome.GetNpcsByHomeLocationId(_gameWonderer.HomeLocationID);
+
+            if (npcsInHomeLocation.Count > 0)
+            {
+                DisplayGamePlayScreen("You just have me to speak with", Text.NpcsChooseList(npcsInHomeLocation), ActionMenu.NpcMenu, "");
+
+                while (!validNpcId)
+                {
+                    GetInteger($"Enter the Id number you wish to speak with: ", 0, 0, out npcId);
+
+                    if (_gameHome.IsValidNpcByLocationId(npcId, _gameWonderer.HomeLocationID))
+                    {
+                        Npc npc = _gameHome.GetNpcById(npcId);
+                        if (npc is ISpeak)
+                        {
+                            validNpcId = true;
+                        }
+                        else
+                        {
+                            ClearInputBox();
+                            DisplayInputErrorMessage("It appears I have nothing to say. Please try again.");
+                        }
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("It appears you entered an invalid NPC id. Please try again.");
+                    }
+                }
+            }
+            else
+            {
+                DisplayGamePlayScreen("Choose Character to Speak With", "It appears there are no NPCs here.", ActionMenu.NpcMenu, "");
+            }
+
+            return npcId;
+        }
+
+
+        public void DisplayTalkTo(Npc npc)
+        {
+            ISpeak speakingNpc = npc as ISpeak;
+
+            string message = speakingNpc.Speak();
+
+            if (message == "")
+            {
+                message = "It appears I have nothing to say. Please try again.";
+            }
+
+            DisplayGamePlayScreen("Speak to Character", message, ActionMenu.NpcMenu, "");
+        }
+
         #region ----- display responses to menu action choices -----
 
         public void DisplayWondererInfo()
