@@ -18,7 +18,7 @@ namespace TB_QuestGame
                 Description = "Listening to yourself might be your key to survival.",
                 Messages = new List<string>
                 {
-                    "Breath, slow down and think."
+                    "Breath, slow down and think. My Health and Sanity are not doing well..."
                 }
             },
 
@@ -42,8 +42,32 @@ namespace TB_QuestGame
                 Description = "Listening to yourself might be your key to survival.",
                 Messages = new List<string>
                 {
-                    "That Bed might be a nice place to rest your feet for a few minutes,",
-                    "It does look a bit shaky, so be careful."
+                    "That Bed might be a nice place to rest your feet for a few minutes, something about it is odd."
+                }
+            },
+
+            new Civilian
+            {
+                Id = 4,
+                Name = "Inner Voice 4",
+                HomeLocationID = 4,
+                Description = "Listening to yourself might be your key to survival.",
+                Messages = new List<string>
+                {
+                    "When laying on the Bed, it must have shifted the wall enough to loosen the Childrens Room door.",
+                    "You notice claw marks on the walls, old blood stains. There might be something I need here..."
+                }
+            },
+
+            new Civilian
+            {
+                Id = 5,
+                Name = "Inner Voice 4",
+                HomeLocationID = 5,
+                Description = "Listening to yourself might be your key to survival.",
+                Messages = new List<string>
+                {
+                    "You hear rustling outside. Wait here until the sound stops...",
                 }
             }
         };

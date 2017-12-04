@@ -121,7 +121,7 @@ namespace TB_QuestGame
                 Name = "Really Old Halloween Candy",
                 HomeLocationId = 4,
                 Description = "This can be used to gain more energy (used upon pickup).",
-                Type = WondererObjectType.Food,
+                Type = WondererObjectType.Key,
                 Value = 0,
                 CanInventory = true,
                 IsConsumable = true,

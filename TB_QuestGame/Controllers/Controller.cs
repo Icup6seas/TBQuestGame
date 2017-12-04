@@ -139,6 +139,10 @@ namespace TB_QuestGame
                         {
                             _gameHome.GetHomeLocationByID(4).Accessable = true;
                         }
+                        if (wondererObject.Id == 9)
+                        {
+                            _gameHome.GetHomeLocationByID(5).Accessable = true;
+                        }
                         if (wondererObject.IsConsumable)
                         {
                             _gameWonderer.Sanity += 20;
@@ -165,10 +169,10 @@ namespace TB_QuestGame
                         {
                             _gameHome.GetHomeLocationByID(3).Accessable = false;
                         }
-                        if (wondererObject.Id == 7)
-                        {
-                            _gameHome.GetHomeLocationByID(4).Accessable = false;
-                        }
+                        //if (wondererObject.Id == 7)
+                        //{
+                        //    _gameHome.GetHomeLocationByID(4).Accessable = false;
+                        //}
                         //if (wondererObject.IsConsumable)
                         //{
                         //    wondererObject.HomeLocationId = -1;
@@ -410,6 +414,10 @@ namespace TB_QuestGame
                 Npc npc = _gameHome.GetNpcById(npcToTalkToId);
 
                 _gameConsoleView.DisplayTalkTo(npc);
+            }
+            if (npcToTalkToId == 5)
+            {
+                _gameHome.GetHomeLocationByID(6).Accessable = true;
             }
         }
 
