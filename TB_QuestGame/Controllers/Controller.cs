@@ -85,11 +85,13 @@ namespace TB_QuestGame
 
                         if (_gameWonderer.Health >= 100)
                         {
-                            _gameWonderer.Health = 100;
+                            _gameWonderer.Health = 65;
                             _gameWonderer.Lives += 1;
                         }
                         if (wondererObject.IsConsumable)
                         {
+                            _gameWonderer.Health += 5;
+                            _gameWonderer.Sanity += 10;
                             wondererObject.HomeLocationId = -1;
                         }
                         break;
@@ -99,10 +101,12 @@ namespace TB_QuestGame
 
                         if (_gameWonderer.Sanity >= 100)
                         {
-                            _gameWonderer.Sanity = 100;
+                            _gameWonderer.Sanity = 50;
                         }
                         if (wondererObject.IsConsumable)
                         {
+                            _gameWonderer.Health += 5;
+                            _gameWonderer.Sanity += 10;
                             wondererObject.HomeLocationId = -1;
                         }
                         
@@ -110,6 +114,15 @@ namespace TB_QuestGame
                     case WondererObjectType.Weapon:
                         break;
                     case WondererObjectType.Stuff:
+                        _gameWonderer.Sanity += wondererObject.Value;
+
+                        if (wondererObject.IsConsumable)
+                        {
+                            //_gameWonderer.Health += 5;
+                            _gameWonderer.Sanity += 10;
+                            wondererObject.HomeLocationId = -1;
+                        }
+
                         break;
                     case WondererObjectType.Key:
                         if (wondererObject.Id == 6)
@@ -122,6 +135,7 @@ namespace TB_QuestGame
                         }
                         if (wondererObject.IsConsumable)
                         {
+                            _gameWonderer.Sanity += 20;
                             wondererObject.HomeLocationId = -1;
                         }
                         break;
