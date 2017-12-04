@@ -402,7 +402,7 @@ namespace TB_QuestGame
             _gameWonderer.Inventory.Remove(wondererObject);
             wondererObject.HomeLocationId = _gameWonderer.HomeLocationID;
 
-            _gameConsoleView.DisplayConfirmTravelerObjectAddedToInventory(wondererObject);
+            _gameConsoleView.DisplayConfirmTravelerObjectRemovedFromInventory(wondererObject);
         }
 
         private void TalkToAction()
