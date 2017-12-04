@@ -61,6 +61,7 @@ namespace TB_QuestGame
                 CanInventory = true,
                 IsConsumable = true,
                 IsVisible = true
+                
             },
 
             new WondererObject

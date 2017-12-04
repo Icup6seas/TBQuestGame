@@ -82,10 +82,11 @@ namespace TB_QuestGame
                 {
                     case WondererObjectType.Food:
                         _gameWonderer.Health += wondererObject.Value;
+                        _gameWonderer.Sanity += wondererObject.Value;
 
                         if (_gameWonderer.Health >= 100)
                         {
-                            _gameWonderer.Health = 65;
+                            _gameWonderer.Health = 100;
                             _gameWonderer.Lives += 1;
                         }
                         if (wondererObject.IsConsumable)
@@ -98,10 +99,11 @@ namespace TB_QuestGame
 
                     case WondererObjectType.Medicine:
                         _gameWonderer.Sanity += wondererObject.Value;
+                        _gameWonderer.Health += wondererObject.Value;
 
                         if (_gameWonderer.Sanity >= 100)
                         {
-                            _gameWonderer.Sanity = 50;
+                            _gameWonderer.Sanity = 100;
                         }
                         if (wondererObject.IsConsumable)
                         {
@@ -115,13 +117,17 @@ namespace TB_QuestGame
                         break;
                     case WondererObjectType.Stuff:
                         _gameWonderer.Sanity += wondererObject.Value;
+                        _gameWonderer.Health += wondererObject.Value;
 
-                        if (wondererObject.IsConsumable)
-                        {
-                            //_gameWonderer.Health += 5;
-                            _gameWonderer.Sanity += 10;
-                            wondererObject.HomeLocationId = -1;
-                        }
+                        _gameWonderer.Health += 5;
+                        _gameWonderer.Sanity += 10;
+
+                        //if (wondererObject.IsConsumable)
+                        //{
+                        //    _gameWonderer.Health += 5;
+                        //    _gameWonderer.Sanity += 10;
+                        //    wondererObject.HomeLocationId = -1;
+                        //}
 
                         break;
                     case WondererObjectType.Key:
@@ -417,9 +423,9 @@ namespace TB_QuestGame
             _gameWonderer.Name = Wonderer.Name;
             _gameWonderer.Age = Wonderer.Age;
             _gameWonderer.Height = Wonderer.Height;
-            _gameWonderer.Sanity = 100;
-            _gameWonderer.Health = 100;
-            _gameWonderer.Lives = 3;
+            _gameWonderer.Sanity = 50;
+            _gameWonderer.Health = 35;
+            _gameWonderer.Lives = 1;
         }
 
         private void UpdateGameStatus()
