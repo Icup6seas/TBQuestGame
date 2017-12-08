@@ -146,7 +146,7 @@ namespace TB_QuestGame
             {
                 Id = 11,
                 Name = "Bandages",
-                HomeLocationId = 1,
+                HomeLocationId = 0,
                 Description = "Used to dress wounds (used upon pickup).",
                 Type = WondererObjectType.Medicine,
                 Value = 0,
@@ -159,7 +159,7 @@ namespace TB_QuestGame
             {
                 Id = 12,
                 Name = "Cocain",
-                HomeLocationId = 1,
+                HomeLocationId = 0,
                 Description = "Sometimes you need that extra KICK to survive (used upon pickup).",
                 Type = WondererObjectType.Medicine,
                 Value = 0,

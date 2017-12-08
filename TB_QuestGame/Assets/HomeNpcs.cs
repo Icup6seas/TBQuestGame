@@ -67,7 +67,7 @@ namespace TB_QuestGame
                 Description = "Listening to yourself might be your key to survival.",
                 Messages = new List<string>
                 {
-                    "You hear rustling outside. Wait here until the sound stops..."
+                    "You hear rustling outside. Wait here until you feel it's safe..."
                 }
             }
         };
