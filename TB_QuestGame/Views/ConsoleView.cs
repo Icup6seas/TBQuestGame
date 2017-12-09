@@ -182,7 +182,7 @@ namespace TB_QuestGame
             return heightType;
         }
 
-        public bool DisplaySpashScreen()
+        public bool DisplaySplashScreen()
         {
             bool playing = true;
             ConsoleKeyInfo keyPressed;

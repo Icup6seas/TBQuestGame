@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,10 +31,14 @@ namespace TB_QuestGame
 
         public Controller()
         {
+
+            PlayMusic();
+
             //
             // setup all of the objects in the game
             //
             InitializeGame();
+
 
             //
             // begins running the application UI
@@ -194,7 +199,7 @@ namespace TB_QuestGame
             //
             // display splash screen
             //
-            _playingGame = _gameConsoleView.DisplaySpashScreen();
+            _playingGame = _gameConsoleView.DisplaySplashScreen();
 
             //
             // player chooses to quit
@@ -420,6 +425,16 @@ namespace TB_QuestGame
                 _gameHome.GetHomeLocationByID(6).Accessable = true;
             }
         }
+        
+        static void PlayMusic()
+        {
+            SoundPlayer scaryMusic = new SoundPlayer(@"Media\Sergey_Schepkin.wav");
+
+            scaryMusic.PlayLooping();
+
+            scaryMusic.Dispose();
+        }
+
 
         /// <summary>
         /// initialize the player info
