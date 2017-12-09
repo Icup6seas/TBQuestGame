@@ -57,7 +57,7 @@ namespace TB_QuestGame.Assets
                 HomeLocationID = 3,
                 HomeLocation = "First Door on the left, down the hallway.",
                 Description = "The door seems to be battered and broke, there might be something good in here. You use the sink pipe to pry the door open.",
-                GeneralContents = "Useless furnature but lots of drawers, I should take a look, ther migh be something of use...there is a bed",
+                GeneralContents = "Useless furnature but lots of drawers, I should take a look, there might be something of use...there is a bed",
                 Accessable = false,
             },
 
