@@ -428,6 +428,9 @@ namespace TB_QuestGame
         
         static void PlayMusic()
         {
+            //Got the song from http://freemusicarchive.org/music/Sergey_Schepkin/Works_by_Andrew_Bissett/Andrew_Bisset_-_Cultural_Dis-Ease_1299
+            //Then used an online converter to change it from .mp3 to .wav
+
             SoundPlayer scaryMusic = new SoundPlayer(@"Media\Sergey_Schepkin.wav");
 
             scaryMusic.PlayLooping();
